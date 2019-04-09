@@ -25,13 +25,13 @@ These instructions will get you a copy of the project up and running on your loc
 To begin clone the repository from Github to your development machine.
 
 ```
-git clone https://github.com/USGS-WiM/sparrow-midcontinental-js.git
+git clone https://github.com/USGS-WiM/sparrow-midwest-js.git
 ```
 
 Change to the new newly created directory
 
 ```
-cd sparrow-midcontinental-js
+cd sparrow-midwest-js
 ```
 
 Install dependencies using NPM

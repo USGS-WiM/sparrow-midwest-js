@@ -1075,13 +1075,13 @@ function generateRenderer() {
         }
         if ($(".radio input[type='radio']:checked")[0].id == "radio3") {
             //nitro green schema
-            colorRamp.fromColor = new Color.fromHex("#7887AB");
-            colorRamp.toColor = new Color.fromHex("#061539");
+            colorRamp.fromColor = new Color.fromHex("#ABCEEA");
+            colorRamp.toColor = new Color.fromHex("#00305");
             } 
         if ($(".radio input[type='radio']:checked")[0].id == "radio4"){
             //sediment color ramp
-            colorRamp.fromColor = new Color.fromHex("#FFA555");
-            colorRamp.toColor = new Color.fromHex("#704925");
+            colorRamp.fromColor = new Color.fromHex("#FFE5B4");
+            colorRamp.toColor = new Color.fromHex("#B24903");
         }
 
         colorRamp.algorithm = "hsv"; // options are:  "cie-lab", "hsv", "lab-lch"
@@ -1112,8 +1112,8 @@ function generateRenderer() {
 
                 //set new label
                 if (index == 4) {
-                    //less than sign on the last label maxValue
-                    var newLabel = minVal.toString() + " <";
+                    //handle greater than for last label maxValue
+                    var newLabel = "greater than "+ minVal.toString();
                 } else {
                     var newLabel = minVal.toString() + " - " + maxVal.toString();
                 }
