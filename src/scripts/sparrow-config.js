@@ -6,7 +6,7 @@ THIS CONFIG REMOVES CATCHMENT AND AGGREGATE LABELS FROM THE CHARTOUTFIELS OBJECT
 ALSO uses SPARROWID and ST_SPARRID in place of COMID, ST_COMID
 */
 
-var appTitle = "2012 SPARROW Models for the Midwest: Streamflow, Total Nitrogen, Total Phosphorus and Suspended Sediment (Mississippi, Great Lakes, and Sourics-Red Rainy Basins";
+var appTitle = "2012 SPARROW Models for the Midwest: Streamflow, Total Nitrogen, Total Phosphorus and Suspended Sediment";
 var appVersion = "v0.9.0";
 
 var serviceBaseURL =
@@ -33,14 +33,14 @@ var groupResultsLabels = {
     b: "8-Digit hydrologic unit code",
     c: "Tributary",
     d: "River Basin",
-    e: "State/Province"
+    e: "State"
 };
 
 //download locations
-var phosphorusShapefileURL = "https://sparrow.wim.usgs.gov/mid-continental/downloads/midcont_shapefiles_phosphorus.zip";
+/* var phosphorusShapefileURL = "https://sparrow.wim.usgs.gov/mid-continental/downloads/midcont_shapefiles_phosphorus.zip";
 var nitrogenShapefileURL = "https://sparrow.wim.usgs.gov/mid-continental/downloads/midcont_shapefiles_nitrogen.zip";
 var phosCalibrationURL = "https://sparrow.wim.usgs.gov/mid-continental/downloads/midcont_calibration_sites_tp.zip";
-var nitroCalibrationURL = "https://sparrow.wim.usgs.gov/mid-continental/downloads/midcont_calibration_sites_tn.zip";
+var nitroCalibrationURL = "https://sparrow.wim.usgs.gov/mid-continental/downloads/midcont_calibration_sites_tn.zip"; */
 
 var tableOutFields = [
     { field: "FID", name: "Unique Feature Id" },
@@ -64,7 +64,7 @@ var stateTableOutFields = [
 ];
 
 var aggregateDefinitions = {
-    st: "State/Province",
+    st: "State",
     gp1: "Major Drainage Area",
     gp2: "Tributary",
     gp3: "HUC8/Sub-sub drainage ",
@@ -79,6 +79,7 @@ var catchmentDefinitions = {
     st_comid: "SPARROW Reach by State",
     pname: "Catchment Name",
     accl: "Accumulated load (kg)",
+    concentrat: "Concentration, mg/ L",
     incl: "Incremental load (kg)",
     accy: "Accumulated yield (kg/km2)",
     incy: "Incremental yield (kg/km2)",
@@ -94,6 +95,7 @@ var catchmentDefinitions_tn = {
     st_comid: "SPARROW Reach ID by State",
     pname: "Catchment Name",
     accl: "Accumulated load (kg)",
+    concentrat: "Concentration, mg/L",
     incl: "Incremental load (kg)",
     accy: "Accumulated yield (kg/km2)",
     incy: "Incremental yield (kg/km2)",
@@ -122,6 +124,7 @@ var catchmentDefinitions_ss = {
     st_comid: "SPARROW Reach ID by State",
     pname: "Catchment Name",
     accl: "Accumulated load (MT)",
+    concentrat: "Concentration, mg/L",
     incl: "Incremental load (MT)",
     accy: "Accumulated yield (MT/km2)",
     incy: "Incremental yield (MT/km2)",
@@ -237,6 +240,15 @@ var Catchments = [
         field: "ACCL",
         name: catchmentDefinitions.accl,
         chartOutfields: getFields(phosphorusSourceDefinitions, catchmentDefinitions, "accl", "comid")
+    },
+    {
+        field: "CONCENTRAT",
+        name: catchmentDefinitions.concentrat,
+        chartOutfields: [
+            { attribute: "COMID", label: catchmentDefinitions.comid },
+            { attribute: "CONCENTRAT", label: catchmentDefinitions.concentrat + " Total" }
+
+        ]
     },
     {
         field: "INCL",
@@ -374,6 +386,15 @@ var Catchments_st = [
         chartOutfields: getFields(phosphorusSourceDefinitions, catchmentDefinitions, "accl", "st_comid")
     },
     {
+        field: "CONCENTRAT",
+        name: catchmentDefinitions.concentrat,
+        chartOutfields: [
+            { attribute: "ST_COMID", label: catchmentDefinitions.comid },
+            { attribute: "CONCENTRAT", label: catchmentDefinitions.concentrat + " Total" }
+
+        ]
+    },
+    {
         field: "INCL",
         name: catchmentDefinitions.incl,
         chartOutfields: getFields(phosphorusSourceDefinitions, catchmentDefinitions, "incl", "st_comid")
@@ -487,6 +508,15 @@ var Catchments_tn = [
         field: "ACCL",
         name: catchmentDefinitions_tn.accl,
         chartOutfields: getFields(nitrogenSourceDefinitions, catchmentDefinitions_tn, "accl", "comid")
+    },
+    {
+        field: "CONCENTRAT",
+        name: catchmentDefinitions_tn.concentrat,
+        chartOutfields: [
+            { attribute: "COMID", label: catchmentDefinitions_tn.comid },
+            { attribute: "CONCENTRAT", label: catchmentDefinitions_tn.concentrat + " Total" }
+
+        ]
     },
     {
         field: "INCL",
@@ -622,6 +652,15 @@ var Catchments_st_tn = [
         field: "ACCL",
         name: catchmentDefinitions_tn.accl,
         chartOutfields: getFields(nitrogenSourceDefinitions, catchmentDefinitions_tn, "al", "st_comid")
+    },
+    {
+        field: "CONCENTRAT",
+        name: catchmentDefinitions_tn.concentrat,
+        chartOutfields: [
+            { attribute: "ST_COMID", label: catchmentDefinitions_tn.comid },
+            { attribute: "CONCENTRAT", label: catchmentDefinitions_tn.concentrat + " Total" }
+
+        ]
     },
     {
         field: "INCL",
@@ -987,6 +1026,15 @@ var Catchments_ss = [
         chartOutfields: getFields(sedimentSourceDefinitions, catchmentDefinitions_ss, "accl", "comid")
     },
     {
+        field: "CONCENTRAT",
+        name: catchmentDefinitions_ss.concentrat,
+        chartOutfields: [
+            { attribute: "COMID", label: catchmentDefinitions_ss.comid },
+            { attribute: "CONCENTRAT", label: catchmentDefinitions_ss.concentrat + " Total" }
+
+        ]
+    },
+    {
         field: "INCL",
         name: catchmentDefinitions_ss.incl,
         chartOutfields: getFields(sedimentSourceDefinitions, catchmentDefinitions_ss, "incl", "comid")
@@ -1120,6 +1168,15 @@ var Catchments_st_ss = [
         field: "ACCL",
         name: catchmentDefinitions_ss.accl,
         chartOutfields: getFields(sedimentSourceDefinitions, catchmentDefinitions_ss, "al", "st_comid")
+    },
+    {
+        field: "CONCENTRAT",
+        name: catchmentDefinitions_ss.concentrat,
+        chartOutfields: [
+            { attribute: "COMID", label: catchmentDefinitions_ss.comid },
+            { attribute: "CONCENTRAT", label: catchmentDefinitions_ss.concentrat + " Total" }
+
+        ]
     },
     {
         field: "INCL",
