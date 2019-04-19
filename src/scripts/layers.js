@@ -91,11 +91,11 @@ require([
                         includeLegend: false
                     }
                 },
-                "Streamflow Calibration Sites": {
+                "Suspended Sediment Calibration Sites": {
                     url: serviceBaseURL,
-                    visibleLayers: [38],
+                    visibleLayers: [39],
                     options: {
-                        id: "streamflowCalibration",
+                        id: "sedimentCalibration",
                         visible: false,
                         opacity: 0.85
                     },
@@ -108,11 +108,11 @@ require([
                         includeLegend: false
                     }
                 },
-                "Suspended Sediment Calibration Sites": {
+                "Streamflow Calibration Sites": {
                     url: serviceBaseURL,
-                    visibleLayers: [39],
+                    visibleLayers: [38],
                     options: {
-                        id: "sedimentCalibration",
+                        id: "streamflowCalibration",
                         visible: false,
                         opacity: 0.85
                     },
@@ -132,11 +132,29 @@ require([
             showGroupHeading: true,
             includeInLayerList: true,
             layers: {
-/*                 "Midcontinent Reaches": {
+                "Midwest Reaches - zoom in to view": {
                     url: serviceBaseURL,
-                    visibleLayers: [20],
+                    visibleLayers: [42],
                     options: {
                         id: "streams",
+                        visible: false,
+                        minScale: 3155581.108577
+                    },
+                    wimOptions: {
+                        type: "layer",
+                        layerType: "agisDynamic",
+                        includeInLayerList: true,
+                        hasOpacitySlider: true,
+                        hasZoomto: false,
+                        zoomScale: 3155581.108577,
+                        includeLegend: false
+                    }
+                },
+                "Reaches > 150 cfs": {
+                    url: serviceBaseURL,
+                    visibleLayers: [41],
+                    options: {
+                        id: "gt150",
                         visible: false
                     },
                     wimOptions: {
@@ -148,11 +166,11 @@ require([
                         includeLegend: false
                     }
                 },
-                "Reaches > 4.2 m³ per second": {
+                "Mainstems": {
                     url: serviceBaseURL,
-                    visibleLayers: [22],
+                    visibleLayers: [40],
                     options: {
-                        id: "gt4.2",
+                        id: "mainstem",
                         visible: false
                     },
                     wimOptions: {
@@ -164,38 +182,6 @@ require([
                         includeLegend: false
                     }
                 },
-                "Reaches > 28 m³ per second": {
-                    url: serviceBaseURL,
-                    visibleLayers: [21],
-                    options: {
-                        id: "gt28",
-                        visible: false
-                    },
-                    wimOptions: {
-                        type: "layer",
-                        layerType: "agisDynamic",
-                        includeInLayerList: true,
-                        hasOpacitySlider: true,
-                        hasZoomto: false,
-                        includeLegend: false
-                    }
-                },
-                "Reaches > 142 m³ per second": {
-                    url: serviceBaseURL,
-                    visibleLayers: [23],
-                    options: {
-                        id: "gt142",
-                        visible: false
-                    },
-                    wimOptions: {
-                        type: "layer",
-                        layerType: "agisDynamic",
-                        includeInLayerList: true,
-                        hasOpacitySlider: true,
-                        hasZoomto: false,
-                        includeLegend: false
-                    }
-                }, */
                 "Land Use 2012": {
                     url: "https://gis.wim.usgs.gov/arcgis/rest/services/SWTrends/lu2012_100515_test/ImageServer",
                     options: {

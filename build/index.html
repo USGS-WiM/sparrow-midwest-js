@@ -2,7 +2,7 @@
 <html>
 
 <head>
-    <title>Midcontinent 2002 Nutrient Loading in Canada and the United States </title>
+    <title>SPARROW Midwest </title>
 
     <meta name="viewport" charset="utf-8" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
@@ -384,7 +384,7 @@
                             </div>
                             <div class="user-guide-item">
                                 <div class="user-guide-item-image"><img src="images/userguide/mappoints.png" /></div>
-                                <p><b>Opening a chart</b>Clicking on a nutrient model feature will generate a chart showing
+                                <p><b>Opening a chart</b>Clicking on a SPARROW model feature will generate a chart showing
                                     the individual sources for the selected feature. The chart also contains a button to
                                     switch to a chart of all features currently displayed. (For more on the Chart features,
                                     see Data Display)</p>
@@ -399,7 +399,7 @@
                             <div class="user-guide-item">
                                 <div class="user-guide-item-image"><img src="images/userguide/legendfull.png" /></div>
                                 <p><b>Using the Explanation</b>The expanded Explanation box contains a legend for the currently
-                                    selected Nutrient Model Results. The legend displays class breaks and values for the
+                                    selected SPARROW Model Results. The legend displays class breaks and values for the
                                     model results currently visible on the map, and updates dynamically with any change in
                                     mapped area.</p>
                             </div>
@@ -418,7 +418,7 @@
                             </div>
                             <div class="user-guide-item">
                                 <div class="user-guide-item-image"><img src="images/userguide/nutrientmodel.png" /></div>
-                                <p><b>Selecting a Nutrient Model</b>The Nutrient Model can be changed at any time to view
+                                <p><b>Selecting a SPARROW Model</b>The SPARROW Model can be changed at any time to view
                                     total phosphorus or total nitrogen.</p>
                             </div>
                             <div class="user-guide-item">
@@ -505,16 +505,16 @@
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><i class="ion-close"></i></button>
                     <h3 style="margin: 0;">Download Geospatial Data</h3>
                 </div>
-                <div id="ddModalBody" class="modal-body">
+               <div id="ddModalBody" class="modal-body">
                     <div style="padding: 35px 0;">
                         <p style="max-width: none; width: 100%; text-align:center;">
-                            <b style="text-align:center; margin: 0 auto; ">All Model Results</b>
+                            <b style="text-align:center; margin: 0 auto; ">All Model Results (Coming Soon)</b>
                             <div style="text-align:center;">
-                                <button type="button" class="btn-blue" id="phosphorusDownload">
-                                    <span class="glyphicon glyphicon-download"></span> Download Phosphorus Model Results
+                                <button type="button" class="btn-blue" id="phosphorusDownload" style="cursor:not-allowed">
+                                    <span class="glyphicon glyphicon-download downloadButton"></span> Download Phosphorus Model Results
                                 </button>
-                                <button type="button" class="btn-blue" id="nitrogenDownload">
-                                    <span class="glyphicon glyphicon-download"></span> Download Nitrogen Model Results
+                                <button type="button" class="btn-blue" id="nitrogenDownload" style="cursor:not-allowed">
+                                    <span class="glyphicon glyphicon-download downloadButton"></span> Download Nitrogen Model Results
                                 </button>
                             </div>
                         </p>
@@ -523,11 +523,17 @@
                         <p style="text-align:center; margin:0 autol">
                             <b>Calibration Site Information</b>
                             <div style="text-align:center;">
-                                <button type="button" class="btn-blue" id="phosphorusCalibrationDownload">
-                                    <span class="glyphicon glyphicon-download"></span> Download Phosphorus Calibration Sites
+                                <button type="button" class="btn-blue downloadButton" id="phosphorusCalibrationDownload">
+                                    <span class="glyphicon glyphicon-download downloadButton"></span> Download Phosphorus Calibration Sites
                                 </button>
                                 <button type="button" class="btn-blue" id="nitrogenCalibrationDownload">
-                                    <span class="glyphicon glyphicon-download"></span> Download Nitrogen Calibration Sites
+                                    <span class="glyphicon glyphicon-download downloadButton"></span> Download Nitrogen Calibration Sites
+                                </button>
+                                <button type="button" class="btn-blue" id="sedimentCalibrationDownload">
+                                    <span class="glyphicon glyphicon-download downloadButton"></span> Download Suspended Sediment Calibration Sites
+                                </button>
+                                <button type="button" class="btn-blue" id="streamflowCalibrationDownload">
+                                    <span class="glyphicon glyphicon-download downloadButton"></span> Download Streamflow Calibration Sites
                                 </button>
                             </div>
                         </p>
@@ -631,7 +637,7 @@
                     <div id="filtersPanel" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="filtersPanelHeader">
                         <div class="panel-body collapse in">
 
-                            <h6 class="alignc">Nutrient Model</h6>
+                            <h6 class="alignc">SPARROW Model</h6>
                             <!-- <div id="nutrientRadio" class="btn-gorup" data-toggle="buttons"> -->
                             <div id="modelResultsRadio">
                                 <label for="radio1" class="rdo row radio active">
@@ -642,20 +648,21 @@
                                     <input type="radio" name="radio1" id="radio2" value="option2" />
                                     <span>Total Nitrogen</span>
                                 </label>
-                                <label for="radio3" class="rdo row radio">
-                                    <input type="radio" name="radio1" id="radio3" value="option3" />
-                                    <span>Streamflow</span>
-                                </label>
                                 <label for="radio4" class="rdo row radio">
                                     <input type="radio" name="radio1" id="radio4" value="option4" />
                                     <span>Suspended Sediment</span>
+                                </label>
+                                <!--UPDATE IMPORTANT! moved radio3 to last position after app was already set up. fix this if cloning for another app-->
+                                <label for="radio3" class="rdo row radio">
+                                    <input type="radio" name="radio1" id="radio3" value="option3" />
+                                    <span>Streamflow</span>
                                 </label>
                             </div>
 
                             <hr/>
 
                             <h6 class="alignc">Area of Interest</h6>
-                            <select id="st-select" class="selectpicker 0 aoiSelect" title="State/Province" data-size="10" data-width="100%"></select>
+                            <select id="st-select" class="selectpicker 0 aoiSelect" title="State" data-size="10" data-width="100%"></select>
 
                             <select id="grp1-select" class="selectpicker 1 aoiSelect" title="Major drainage area" data-size="10" data-width="100%"></select>
 
@@ -675,7 +682,7 @@
                                 <option>8-Digit hydrologic unit code</option>
                                 <option>Tributary</option>
                                 <option>Major drainage area</option>
-                                <option>State/Province</option>
+                                <option>State</option>
                             </select>
 
                         </div>

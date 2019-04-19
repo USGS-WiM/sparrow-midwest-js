@@ -1089,6 +1089,14 @@ require([
                 calibrationId = app.map.getLayer("phosCalibration").visibleLayers[0];
                 app.identifyParams.layerIds.push(calibrationId);
             }
+            if (visLayers[i].id === "streamflowCalibration" && app.map.getLayer("streamflowCalibration").visible === true) {
+                calibrationId = app.map.getLayer("streamflowCalibration").visibleLayers[0];
+                app.identifyParams.layerIds.push(calibrationId);
+            }
+            if (visLayers[i].id === "sedimentCalibration" && app.map.getLayer("sedimentCalibration").visible === true) {
+                calibrationId = app.map.getLayer("sedimentCalibration").visibleLayers[0];
+                app.identifyParams.layerIds.push(calibrationId);
+            }
         }
 
         app.identifyParams.geometry = evt.mapPoint;
@@ -1252,7 +1260,7 @@ require([
                         if (responseObj.layerId === 39) {
                             var model_ss = "Suspended Sediment";
                             var calibrationTemplateN = new esri.InfoTemplate();
-                            calibrationTemplateN.setTitle("SPARROW " + model_ss + " Calibration Site");
+                            calibrationTemplateN.setTitle(model_ss + " Calibration Site");
                             //UPDATE important! make sure the field names below match what is in the REST layer
                             calibrationTemplateN.setContent(
                                 "<div><b>Station Name:</b> " +
@@ -2850,7 +2858,7 @@ require([
 
                     $("#zoomscale").click(function(e, layerToChange) {
                         //logic to zoom to layer scale
-                        var layerMinScale = app.map.getLayer("SparrowRanking").minScale;
+                        var layerMinScale = app.map.getLayer("streams").minScale;
                         if (layerMinScale > 0) {
                             app.map.setScale(layerMinScale);
                         } else {

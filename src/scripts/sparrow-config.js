@@ -37,10 +37,13 @@ var groupResultsLabels = {
 };
 
 //download locations
-/* var phosphorusShapefileURL = "https://sparrow.wim.usgs.gov/mid-continental/downloads/midcont_shapefiles_phosphorus.zip";
-var nitrogenShapefileURL = "https://sparrow.wim.usgs.gov/mid-continental/downloads/midcont_shapefiles_nitrogen.zip";
-var phosCalibrationURL = "https://sparrow.wim.usgs.gov/mid-continental/downloads/midcont_calibration_sites_tp.zip";
-var nitroCalibrationURL = "https://sparrow.wim.usgs.gov/mid-continental/downloads/midcont_calibration_sites_tn.zip"; */
+var rootURL = "https://test.wim.usgs.gov/SparrowMidwest/downloads/";
+/*var phosphorusShapefileURL = "https://sparrow.wim.usgs.gov/mid-continental/downloads/midcont_shapefiles_phosphorus.zip";
+var nitrogenShapefileURL = "https://sparrow.wim.usgs.gov/mid-continental/downloads/midcont_shapefiles_nitrogen.zip";*/
+var phosCalibrationURL = rootURL + "midwest_calibration_sites_tp.zip";
+var nitroCalibrationURL = rootURL + "midwest_calibration_sites_tn.zip";
+var streamflowCalibrationURL = rootURL + "midwest_calibration_sites_q.zip";
+var sedimentCalibrationURL = rootURL + "midwest_calibration_sites_ss.zip";
 
 var tableOutFields = [
     { field: "FID", name: "Unique Feature Id" },
@@ -207,11 +210,11 @@ var sedimentSourceDefinitions = {
     1. each color corresponds with the order of SourceDefinitions objects above  
     2. there the number of hex colors matches the number of nutrient sources
 **/
-var phosColors = ["#BF0000", "#FFCCFF", "#663100", "#FFEC99", "#EAA720", "#0070C0", "#00a900"];
-var nitroColors = ["#BF0000", "#FFCCFF", "#663100", "#FFEC99", "#A2EB85", "#00a900", "#006800", "#0070C0"];
-
-var streamflowColors = ["#BF0000", "#FFCCFF", "#663100", "#FFEC99", "#EAA720", "#0070C0", "#00a900"];
-var sedimentColors = ["#BF0000", "#FFCCFF", "#663100", "#FFEC99", "#A2EB85", "#00a900", "#006800", "#0070C0"];
+var phosColors = ["#BF0000", "#FFCCFF", "#663100", "#FFEC99", "#EAA720", "#0070C0"];
+var nitroColors = ["#BF0000", "#FFCCFF", "#663100", "#FFEC99", "#A2EB85", "#00a900", "#9B2D72"];
+var streamflowColors = ["#0070C0", "#FFCCFF", "#663100", "#00a900", "#EAA720" ];
+//var sedimentColors = ["#BF0000", "#FFCCFF", "#663100", "#FFEC99", "#A2EB85", "#00a900", "#006800", "#0070C0"];
+var sedimentColors = ["#BF0000", "#FF0D00", "#EF898C", "#C68E1F", "#753E08", "#FFEC99", "#A2EB85", "#00a900", "#006800", "#0070C0", "#9B2D72", "#FD491E"]
 
 function getFields(sourceDefObj, mappedDefObj, definitionCode, group) {
     var fieldsArr = [];
