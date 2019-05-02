@@ -2623,11 +2623,11 @@ require([
 
     $("#legendDiv").niceScroll();
 
-    app.maxLegendHeight = $("#mapDiv").height() * 0.9;
+    app.maxLegendHeight = $("#mapDiv").height() * 0.95;
     $("#legendElement").css("max-height", app.maxLegendHeight);
 
     $("#legendCollapse").on("shown.bs.collapse", function() {
-        app.maxLegendHeight = $("#mapDiv").height() * 0.9;
+        app.maxLegendHeight = $("#mapDiv").height() * 0.95;
         $("#legendElement").css("max-height", app.maxLegendHeight);
         /*** CAUSING SOME NASTY MESS WITH THE LEGEND DIV
         //app.maxLegendDivHeight = ($('#legendElement').height()) - parseInt($('#legendHeading').css("height").replace('px',''));

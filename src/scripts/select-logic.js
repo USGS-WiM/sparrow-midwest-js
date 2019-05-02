@@ -1089,7 +1089,6 @@ function generateRenderer() {
         if (app.chosenSource) {
           // if source selected in sidebar, render based on that source's color in chart
           colorIndex = app.chosenSource.attribute.split('_S')[1] - 1;
-          if (colorIndex > 7) {colorIndex -= 8; }
         }
         var colorRamp = new AlgorithmicColorRamp();
         //different ramps for phos/nitro
