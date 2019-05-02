@@ -8,6 +8,7 @@ function loadEventHandlers() {
 
         populateMetricOptions($("#groupResultsSelect")[0].selectedIndex);
         setAggregateGroup(groupBySelectedIndex, selectedRadio);
+        updateSourceOptions();
         generateRenderer();
 
         //reflow the chart if it's open
@@ -47,6 +48,7 @@ function loadEventHandlers() {
     //set initial Displayed Metric options
     $("#groupResultsSelect").on("loaded.bs.select", function() {
         populateMetricOptions($("#groupResultsSelect")[0].selectedIndex);
+        updateSourceOptions();
         generateRenderer();
     });
 
@@ -89,6 +91,7 @@ function loadEventHandlers() {
 
         populateMetricOptions(e.currentTarget.selectedIndex);
         setAggregateGroup(e.currentTarget.selectedIndex, $(".radio input[type='radio']:checked")[0].id);
+        updateSourceOptions();
         generateRenderer();
 
         /*  if( $("#chartWindowDiv").css("visibility") == "visible" ) {
@@ -101,6 +104,7 @@ function loadEventHandlers() {
     /*METRIC EVENTS*/
     $("#displayedMetricSelect").on("changed.bs.select", function(e) {
         $("#page-loader").fadeIn();
+        updateSourceOptions();
         generateRenderer();
 
         /* if( $("#chartWindowDiv").css("visibility") == "visible" ) {
@@ -111,6 +115,18 @@ function loadEventHandlers() {
         } */
     });
     /*END METRIC EVENTS*/
+
+    /*METRIC EVENTS*/
+    $("#displayedSourceSelect").on("changed.bs.select", function(e) {
+      if (e.target.value == 'All Sources') {
+        delete app.chosenSource;
+      } else {
+        var ind = e.target.selectedIndex;
+        app.chosenSource = {label: e.target[ind].label, attribute: e.target.value};
+      }
+      $("#page-loader").fadeIn();
+      generateRenderer();
+    });
 
     /* CLEAR AOI BUTTON EVENT */
     $("#clearAOIButton").on("click", function() {
@@ -143,6 +159,7 @@ function loadEventHandlers() {
         $(".aoiSelect").selectpicker("val", ""); // 'hack' because selectpicker('deselectAll') method only works when bootstrap-select is open.
         
         populateMetricOptions($("#groupResultsSelect")[0].selectedIndex); //populate correct metric options
+        updateSourceOptions();
         generateRenderer(); //redraw the symbols
 
         //return to Default AOI options for ALL AOI selects

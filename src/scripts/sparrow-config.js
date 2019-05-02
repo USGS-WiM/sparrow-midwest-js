@@ -7,7 +7,7 @@ ALSO uses SPARROWID and ST_SPARRID in place of COMID, ST_COMID
 */
 
 var appTitle = "2012 SPARROW Models for the Midwest: Streamflow, Total Nitrogen, Total Phosphorus and Suspended Sediment";
-var appVersion = "v0.9.0";
+var appVersion = "v0.9.0"; // could pull this from code/package.json
 
 var serviceBaseURL =
     "https://sparrowtest.wim.usgs.gov/arcgis/rest/services/SparrowMidwest/SparrowMidwest/MapServer/"; //important! UPDATE rest service URL
@@ -206,12 +206,20 @@ var sedimentSourceDefinitions = {
 /**get the HEX values below from project Google Doc and make sure:  
     1. each color corresponds with the order of SourceDefinitions objects above  
     2. there the number of hex colors matches the number of nutrient sources
+    3. find coordinating colors (using some sort of gradient generator) and add to the 
+      **ToColors arrays. The code will order it from light --> dark, so don't worry about that.
 **/
 var phosColors = ["#BF0000", "#FFCCFF", "#663100", "#FFEC99", "#EAA720", "#0070C0", "#00a900"];
+var phosToColors = ["#FFA479", "#431B45", "#FFC590", "#362E00", "#481A00", "#A6E2FF", "#002F00"];
+
 var nitroColors = ["#BF0000", "#FFCCFF", "#663100", "#FFEC99", "#A2EB85", "#00a900", "#006800", "#0070C0"];
+var nitroToColors = ["#FFA479", "#431B45", "#FFC590", "#362E00", "#003500", "#002F00", "#9DF086", "#A6E2FF"];
 
 var streamflowColors = ["#BF0000", "#FFCCFF", "#663100", "#FFEC99", "#EAA720", "#0070C0", "#00a900"];
+var streamflowToColors = ["#FFA479", "#431B45", "#FFC590", "#362E00", "#481A00", "#A6E2FF", "#002F00"];
+
 var sedimentColors = ["#BF0000", "#FFCCFF", "#663100", "#FFEC99", "#A2EB85", "#00a900", "#006800", "#0070C0"];
+var sedimentToColors = ["#FFA479", "#431B45", "#FFC590", "#362E00", "#003500", "#002F00", "#9DF086", "#A6E2FF"];
 
 function getFields(sourceDefObj, mappedDefObj, definitionCode, group) {
     var fieldsArr = [];
