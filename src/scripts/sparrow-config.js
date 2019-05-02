@@ -37,10 +37,13 @@ var groupResultsLabels = {
 };
 
 //download locations
-/* var phosphorusShapefileURL = "https://sparrow.wim.usgs.gov/mid-continental/downloads/midcont_shapefiles_phosphorus.zip";
-var nitrogenShapefileURL = "https://sparrow.wim.usgs.gov/mid-continental/downloads/midcont_shapefiles_nitrogen.zip";
-var phosCalibrationURL = "https://sparrow.wim.usgs.gov/mid-continental/downloads/midcont_calibration_sites_tp.zip";
-var nitroCalibrationURL = "https://sparrow.wim.usgs.gov/mid-continental/downloads/midcont_calibration_sites_tn.zip"; */
+var rootURL = "https://test.wim.usgs.gov/SparrowMidwest/downloads/";
+/*var phosphorusShapefileURL = "https://sparrow.wim.usgs.gov/mid-continental/downloads/midcont_shapefiles_phosphorus.zip";
+var nitrogenShapefileURL = "https://sparrow.wim.usgs.gov/mid-continental/downloads/midcont_shapefiles_nitrogen.zip";*/
+var phosCalibrationURL = rootURL + "midwest_calibration_sites_tp.zip";
+var nitroCalibrationURL = rootURL + "midwest_calibration_sites_tn.zip";
+var streamflowCalibrationURL = rootURL + "midwest_calibration_sites_q.zip";
+var sedimentCalibrationURL = rootURL + "midwest_calibration_sites_ss.zip";
 
 var tableOutFields = [
     { field: "FID", name: "Unique Feature Id" },
@@ -209,17 +212,17 @@ var sedimentSourceDefinitions = {
     3. find coordinating colors (using some sort of gradient generator) and add to the 
       **ToColors arrays. The code will order it from light --> dark, so don't worry about that.
 **/
-var phosColors = ["#BF0000", "#FFCCFF", "#663100", "#FFEC99", "#EAA720", "#0070C0", "#00a900"];
-var phosToColors = ["#FFA479", "#431B45", "#FFC590", "#362E00", "#481A00", "#A6E2FF", "#002F00"];
+var phosColors = ["#BF0000", "#FFCCFF", "#663100", "#FFEC99", "#EAA720", "#0070C0"];
+var phosToColors = ["#FFA479", "#431B45", "#FFC590", "#362E00", "#481A00", "#A6E2FF"];
 
-var nitroColors = ["#BF0000", "#FFCCFF", "#663100", "#FFEC99", "#A2EB85", "#00a900", "#006800", "#0070C0"];
-var nitroToColors = ["#FFA479", "#431B45", "#FFC590", "#362E00", "#003500", "#002F00", "#9DF086", "#A6E2FF"];
+var nitroColors = ["#BF0000", "#FFCCFF", "#663100", "#FFEC99", "#A2EB85", "#00a900", "#9B2D72"];
+var nitroToColors = ["#FFA479", "#431B45", "#FFC590", "#362E00", "#003500", "#002F00", "#FFB5F9"];
 
-var streamflowColors = ["#BF0000", "#FFCCFF", "#663100", "#FFEC99", "#EAA720", "#0070C0", "#00a900"];
-var streamflowToColors = ["#FFA479", "#431B45", "#FFC590", "#362E00", "#481A00", "#A6E2FF", "#002F00"];
+var streamflowColors = ["#0070C0", "#FFCCFF", "#663100", "#00a900", "#EAA720" ];
+var streamflowToColors = ["#A6E2FF", "#431B45", "#FFC590", "#002F00", "#481A00"];
 
-var sedimentColors = ["#BF0000", "#FFCCFF", "#663100", "#FFEC99", "#A2EB85", "#00a900", "#006800", "#0070C0"];
-var sedimentToColors = ["#FFA479", "#431B45", "#FFC590", "#362E00", "#003500", "#002F00", "#9DF086", "#A6E2FF"];
+var sedimentColors = ["#BF0000", "#FF0D00", "#EF898C", "#C68E1F", "#753E08", "#FFEC99", "#A2EB85", "#00a900", "#006800", "#0070C0", "#9B2D72", "#FD491E"]
+var sedimentToColors = ["#FFA479", "#750000", "#53000E", "#401700", "#FFC98E", "#362E00", "#003500", "#002F00", "#9DF086", "#A6E2FF", "#FFB5F9", "#6C0000"];
 
 function getFields(sourceDefObj, mappedDefObj, definitionCode, group) {
     var fieldsArr = [];

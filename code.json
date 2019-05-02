@@ -25,11 +25,15 @@
     "laborHours": null,
 
     "tags": [
-      "sparrow"
+      "sparrow",
+      "water quality",
+      "midwest"
     ],
 
     "languages": [
-      "javascript"
+      "javascript",
+      "JQuery",
+      "ESRI"
     ],
 
     "contact": {
