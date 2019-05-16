@@ -245,7 +245,7 @@ function populateMetricOptions(selectedIndex) {
         .remove();
     $.each(metricOptions, function(index, value) {
         $("#displayedMetricSelect").append(new Option(value.name, value.field));
-        
+
     });
 
     $("#displayedMetricSelect").selectpicker("refresh");
@@ -273,6 +273,24 @@ function populateMetricOptions(selectedIndex) {
         $("#displayedMetricSelect").selectpicker("val", metricOptions[0].field);
     }
 } // END populateMetricOptions
+
+function updateSourceOptions() {
+  delete app.chosenSource;
+  //remove old source data options, add new and refresh
+  $("#displayedSourceSelect")
+    .find("option")
+    .remove();
+  $("#displayedSourceSelect").append(new Option('All Sources', 'All Sources'));
+  var sourceOptions = getChartOutfields(app.map.getLayer("SparrowRanking").visibleLayers[0]);
+  $.each(sourceOptions, function(index, value) {
+    if (value.attribute.indexOf('_') > -1) {
+      var shortName = value.label.split(") ")[1]
+      $("#displayedSourceSelect").append(new Option(shortName, value.attribute));
+    }
+  });
+  $("#displayedSourceSelect").selectpicker("refresh");
+  $("#displayedSourceSelect").selectpicker("val", "All Sources");
+}
 
 //used when clearing the AOI
 function returnDefaultLayer(sparrowId) {
@@ -643,6 +661,7 @@ function AOIChange(e) {
         //if(app.map.getLayer('SparrowRanking').visibleLayers[0]){
         populateMetricOptions($("#groupResultsSelect")[0].selectedIndex);
         setAggregateGroup(groupResultsIndex, $(".radio input[type='radio']:checked")[0].id);
+        updateSourceOptions();
     //}
 
     //only update if there's a value to update to (clearing selected values depending on Group Results by selections)
@@ -831,13 +850,14 @@ function getLegendLabels(sparrowLayerId) {
         if (sparrowLayerId > 26) {
             return "Total Suspended Sediment";
         }
-    }    
+    }
     var nutrientModel = setModel(sparrowLayerId);
     $.each(configObject, function(index, item) {
-        if ($("#displayedMetricSelect").val() == item.field) {
-            label = item.name;
-        }
+      if ($("#displayedMetricSelect").val() == item.field) {
+          label = item.name;
+      }
     });
+    if (app.chosenSource) {label += ' ' + app.chosenSource.label}
     return nutrientModel + ", " + label;
 } //END getLegendLabels()
 
@@ -1035,7 +1055,11 @@ function generateRenderer() {
         app.outFields = [selectedMetric];
         app.currentAttribute = selectedMetric;
         var classDef = new ClassBreaksDefinition();
-        classDef.classificationField = app.currentAttribute;
+        if (app.chosenSource) {
+          classDef.classificationField = app.chosenSource.attribute;
+        } else {
+          classDef.classificationField = app.currentAttribute;
+        }
         classDef.classificationMethod = "quantile";
         classDef.breakCount = 5;
 
@@ -1061,27 +1085,40 @@ function generateRenderer() {
             );
         }
 
+        var colorIndex = NaN;
+        if (app.chosenSource) {
+          // if source selected in sidebar, render based on that source's color in chart
+          colorIndex = app.chosenSource.attribute.split('_S')[1] - 1;
+        }
         var colorRamp = new AlgorithmicColorRamp();
         //different ramps for phos/nitro
         if ($(".radio input[type='radio']:checked")[0].id == "radio1") {
             //phos brown schema
-            colorRamp.fromColor = new Color.fromHex("#FFF1DC");
-            colorRamp.toColor = new Color.fromHex("#632E0E");
-        } 
+            colorRamp.fromColor = new Color.fromHex((!isNaN(colorIndex) ? phosColors[colorIndex] : "#FFF1DC"));
+            colorRamp.toColor = new Color.fromHex((!isNaN(colorIndex) ? phosToColors[colorIndex] : "#632E0E"));
+        }
         if ($(".radio input[type='radio']:checked")[0].id == "radio2") {
             //nitro green schema
-            colorRamp.fromColor = new Color.fromHex("#F5EBB8");
-            colorRamp.toColor = new Color.fromHex("#004120");
+            colorRamp.fromColor = new Color.fromHex((!isNaN(colorIndex) ? nitroColors[colorIndex] : "#F5EBB8"));
+            colorRamp.toColor = new Color.fromHex((!isNaN(colorIndex) ? nitroToColors[colorIndex] : "#004120"))
         }
         if ($(".radio input[type='radio']:checked")[0].id == "radio3") {
             //nitro green schema
-            colorRamp.fromColor = new Color.fromHex("#ABCEEA");
-            colorRamp.toColor = new Color.fromHex("#00305");
-            } 
+            colorRamp.fromColor = new Color.fromHex((!isNaN(colorIndex) ? streamflowColors[colorIndex] : "#ABCEEA"));
+            colorRamp.toColor = new Color.fromHex((!isNaN(colorIndex) ? streamflowToColors[colorIndex] : "#00305"));
+        }
         if ($(".radio input[type='radio']:checked")[0].id == "radio4"){
             //sediment color ramp
-            colorRamp.fromColor = new Color.fromHex("#FFE5B4");
-            colorRamp.toColor = new Color.fromHex("#B24903");
+            colorRamp.fromColor = new Color.fromHex((!isNaN(colorIndex) ? sedimentColors[colorIndex] : "#FFE5B4"));
+            colorRamp.toColor = new Color.fromHex((!isNaN(colorIndex) ? sedimentToColors[colorIndex] : "#B24903"));
+        }
+
+        // make sure the lighter colors are the from colors
+        var toColor = colorRamp.toColor;
+        var fromColor = colorRamp.fromColor;
+        if (!isNaN(colorIndex) && toColor.r > fromColor.r) {
+          colorRamp.toColor = fromColor;
+          colorRamp.fromColor = toColor;
         }
 
         colorRamp.algorithm = "hsv"; // options are:  "cie-lab", "hsv", "lab-lch"

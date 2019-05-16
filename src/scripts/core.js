@@ -2053,6 +2053,14 @@ require([
                     //},
                     backgroundColor: "rgba(255, 255, 255, 0.45)",
                     events: {
+                        load: function() {
+                          var chart = this;
+                          chart.renderer.text('<div><i class="fa fa-mouse-pointer"></i> Click on legend elements to toggle on/off layers</div>', 100, 40, true)
+                            .css({
+                              fontSize: '13px'
+                            })
+                            .add();
+                        },
                         selection: function(e) {
                             var categoryArr = [];
 
@@ -2356,18 +2364,21 @@ require([
                                     }
                                 },
                                 click: function(evt) {
-                                    var queryField = switchWhereField($("#groupResultsSelect")[0].selectedIndex);
-                                    var thisCategory;
-                                    if ($("#groupResultsSelect")[0].selectedIndex == 0) {
-                                        thisCategory = this.id;
-                                    } else {
-                                        thisCategory = this.category;
-                                    }
+                                  if (response.features.length > 1) {
+                                    // if more than one feature, click will limit to one feature shown
+                                  var queryField = switchWhereField($("#groupResultsSelect")[0].selectedIndex);
+                                  var thisCategory;
+                                  if ($("#groupResultsSelect")[0].selectedIndex == 0) {
+                                      thisCategory = this.id;
+                                  } else {
+                                      thisCategory = this.category;
+                                  }
 
-                                    var queryString = queryField + " = " + "'" + thisCategory + "'";
+                                  var queryString = queryField + " = " + "'" + thisCategory + "'";
 
-                                    app.map.graphics.clear();
-                                    app.createChartQuery(queryString);
+                                  app.map.graphics.clear();
+                                  app.createChartQuery(queryString);
+                                  }
                                 }
                             }
                         }
@@ -2385,6 +2396,16 @@ require([
                     }
                 });
             });
+            if (app.chosenSource) {
+              $.each($("#chartWindowContainer").highcharts().series, function(i, ser) {
+                var shortName = ser.name.split(") ")[1];
+                if (shortName !== app.chosenSource.label) {
+                  ser.hide();
+                } else {
+                  ser.show();
+                }
+              })
+            }
         }); //END self-invoking highcharts function
         var height = $("#chartWindowDiv").height() - 65;
         var width = $("#chartWindowDiv").width();
@@ -2602,11 +2623,11 @@ require([
 
     $("#legendDiv").niceScroll();
 
-    app.maxLegendHeight = $("#mapDiv").height() * 0.9;
+    app.maxLegendHeight = $("#mapDiv").height() * 0.95;
     $("#legendElement").css("max-height", app.maxLegendHeight);
 
     $("#legendCollapse").on("shown.bs.collapse", function() {
-        app.maxLegendHeight = $("#mapDiv").height() * 0.9;
+        app.maxLegendHeight = $("#mapDiv").height() * 0.95;
         $("#legendElement").css("max-height", app.maxLegendHeight);
         /*** CAUSING SOME NASTY MESS WITH THE LEGEND DIV
         //app.maxLegendDivHeight = ($('#legendElement').height()) - parseInt($('#legendHeading').css("height").replace('px',''));
