@@ -1149,4 +1149,10 @@ Mitch GH Issues Aug 28
 .downloadButton{
     margin:10px;
 }
+#legendInfoButton{
+    margin: 0 auto 15 auto;
+    width: 80%;
+    display: block;
+}
+    
 

@@ -368,6 +368,13 @@ function loadEventHandlers() {
         alert("you can't do that");
     });
 
+    //if modal is called by the button in the legend, open the correct tab  
+    $("#aboutModal").on('show.bs.modal', function(){
+        if (event.srcElement.id == "legendInfoButton"){
+            $(".nav-tabs a[href='#definitionsTabPane']").tab('show');
+        }
+    });
+
     //following block forces map size to override problems with default behavior
     $(window).resize(function() {
         if ($("#legendCollapse").hasClass("in")) {
