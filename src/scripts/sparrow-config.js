@@ -196,7 +196,7 @@ var sedimentSourceDefinitions = {
     s2: "Urban-Colluvium/Residuum/Carbonate",
     s3: "Urban-Fine/Silt",
     s4: "Agriculture-Medium/Coarse",
-    s5: "Agriculture-Colluvium/Residuum/Rarbonate",
+    s5: "Agriculture-Colluvium/Residuum/Carbonate",
     s6: "Agriculture-Fine/Silt",
     s7: "Natural/Other-Medium/Coarse",
     s8: "Natural/Other-Colluvium/Residuum/Carbonate",
