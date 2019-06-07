@@ -206,6 +206,38 @@ var sedimentSourceDefinitions = {
     s12: "Channel Sources"
 };
 
+/*IMPORTANT! the following two objects are used as a patch to account for SUSPENDED SEDIMENT DAL and DAY fields that were truncated in the source data.
+sources 10+ have non-standard source codes.  Be sure to update the references in the SS group fields below, and double-check the data to make sure the groups in the following objects match.*/
+var sedimentSourceDefinitions_DAL = {
+    s1: "Urban-Medium/Coarse",
+    s2: "Urban-Colluvium/Residuum/Carbonate",
+    s3: "Urban-Fine/Silt",
+    s4: "Agriculture-Medium/Coarse",
+    s5: "Agriculture-Colluvium/Residuum/Rarbonate",
+    s6: "Agriculture-Fine/Silt",
+    s7: "Natural/Other-Medium/Coarse",
+    s8: "Natural/Other-Colluvium/Residuum/Carbonate",
+    s9: "Natural/Other-Fine/Silt",
+    s0: 'All Landuses-"Other" Geology',
+    11: "Canada",
+    10: "Channel Sources"
+};
+
+var sedimentSourceDefinitions_DAY = {
+    s1: "Urban-Medium/Coarse",
+    s2: "Urban-Colluvium/Residuum/Carbonate",
+    s3: "Urban-Fine/Silt",
+    s4: "Agriculture-Medium/Coarse",
+    s5: "Agriculture-Colluvium/Residuum/Rarbonate",
+    s6: "Agriculture-Fine/Silt",
+    s7: "Natural/Other-Medium/Coarse",
+    s8: "Natural/Other-Colluvium/Residuum/Carbonate",
+    s9: "Natural/Other-Fine/Silt",
+    12: 'All Landuses-"Other" Geology',
+    13: "Canada",
+    14: "Channel Sources"
+};
+
 /**get the HEX values below from project Google Doc and make sure:  
     1. each color corresponds with the order of SourceDefinitions objects above  
     2. there the number of hex colors matches the number of nutrient sources
@@ -1091,7 +1123,7 @@ var Group3_ss = [
     {
         field: "GP3_DAL",
         name: mappedDefinitions_ss.dal,
-        chartOutfields: getFields(sedimentSourceDefinitions, mappedDefinitions_ss, "dal", "gp3")
+        chartOutfields: getFields(sedimentSourceDefinitions_DAL, mappedDefinitions_ss, "dal", "gp3")
     },
     {
         field: "GP3_AY",
@@ -1101,7 +1133,7 @@ var Group3_ss = [
     {
         field: "GP3_DAY",
         name: mappedDefinitions_ss.day,
-        chartOutfields: getFields(sedimentSourceDefinitions, mappedDefinitions_ss, "day", "gp3")
+        chartOutfields: getFields(sedimentSourceDefinitions_DAY, mappedDefinitions_ss, "day", "gp3")
     }
 ];
 
@@ -1114,7 +1146,7 @@ var Group2_ss = [
     {
         field: "GP2_DAL",
         name: mappedDefinitions_ss.dal,
-        chartOutfields: getFields(sedimentSourceDefinitions, mappedDefinitions_ss, "dal", "gp2")
+        chartOutfields: getFields(sedimentSourceDefinitions_DAL, mappedDefinitions_ss, "dal", "gp2")
     },
     {
         field: "GP2_AY",
@@ -1124,7 +1156,7 @@ var Group2_ss = [
     {
         field: "GP2_DAY",
         name: mappedDefinitions_ss.day,
-        chartOutfields: getFields(sedimentSourceDefinitions, mappedDefinitions_ss, "day", "gp2")
+        chartOutfields: getFields(sedimentSourceDefinitions_DAY, mappedDefinitions_ss, "day", "gp2")
     }
 ];
 
@@ -1137,7 +1169,7 @@ var Group1_ss = [
     {
         field: "GP1_DAL",
         name: mappedDefinitions_ss.dal,
-        chartOutfields: getFields(sedimentSourceDefinitions, mappedDefinitions_ss, "dal", "gp1")
+        chartOutfields: getFields(sedimentSourceDefinitions_DAL, mappedDefinitions_ss, "dal", "gp1")
     },
     {
         field: "GP1_AY",
@@ -1147,7 +1179,7 @@ var Group1_ss = [
     {
         field: "GP1_DAY",
         name: mappedDefinitions_ss.day,
-        chartOutfields: getFields(sedimentSourceDefinitions, mappedDefinitions_ss, "day", "gp1")
+        chartOutfields: getFields(sedimentSourceDefinitions_DAY, mappedDefinitions_ss, "day", "gp1")
     }
 ];
 
@@ -1235,7 +1267,7 @@ var Group3_st_ss = [
     {
         field: "SG3_DAL",
         name: mappedDefinitions_ss.dal,
-        chartOutfields: getFields(sedimentSourceDefinitions, mappedDefinitions_ss, "dal", "sg3")
+        chartOutfields: getFields(sedimentSourceDefinitions_DAL, mappedDefinitions_ss, "dal", "sg3")
     },
     {
         field: "SG3_AY",
@@ -1245,7 +1277,7 @@ var Group3_st_ss = [
     {
         field: "SG3_DAY",
         name: mappedDefinitions_ss.day,
-        chartOutfields: getFields(sedimentSourceDefinitions, mappedDefinitions_ss, "day", "sg3")
+        chartOutfields: getFields(sedimentSourceDefinitions_DAY, mappedDefinitions_ss, "day", "sg3")
     }
 ];
 
@@ -1258,7 +1290,7 @@ var Group2_st_ss = [
     {
         field: "SG2_DAL",
         name: mappedDefinitions_ss.dal,
-        chartOutfields: getFields(sedimentSourceDefinitions, mappedDefinitions_ss, "dal", "sg2")
+        chartOutfields: getFields(sedimentSourceDefinitions_DAL, mappedDefinitions_ss, "dal", "sg2")
     },
     {
         field: "SG2_AY",
@@ -1268,7 +1300,7 @@ var Group2_st_ss = [
     {
         field: "SG2_DAY",
         name: mappedDefinitions_ss.day,
-        chartOutfields: getFields(sedimentSourceDefinitions, mappedDefinitions_ss, "day", "sg2")
+        chartOutfields: getFields(sedimentSourceDefinitions_DAY, mappedDefinitions_ss, "day", "sg2")
     }
 ];
 
@@ -1281,7 +1313,7 @@ var Group1_st_ss = [
     {
         field: "SG1_DAL",
         name: mappedDefinitions_ss.dal,
-        chartOutfields: getFields(sedimentSourceDefinitions, mappedDefinitions_ss, "dal", "sg1")
+        chartOutfields: getFields(sedimentSourceDefinitions_DAL, mappedDefinitions_ss, "dal", "sg1")
     },
     {
         field: "SG1_AY",
@@ -1291,7 +1323,7 @@ var Group1_st_ss = [
     {
         field: "SG1_DAY",
         name: mappedDefinitions_ss.day,
-        chartOutfields: getFields(sedimentSourceDefinitions, mappedDefinitions_ss, "day", "sg1")
+        chartOutfields: getFields(sedimentSourceDefinitions_DAY, mappedDefinitions_ss, "day", "sg1")
     }
 ];
 ////END SUSPENDED SEDIMENT LAYER GROUPS______________________________________________________________________________________________________________________________
