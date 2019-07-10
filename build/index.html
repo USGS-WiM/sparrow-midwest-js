@@ -136,13 +136,15 @@
                             <p class="p-meta p-light fullwidth">
                                 <b>SPARROW Surface Water-Quality Modeling Web Pages</b>
                                 <br/> National Website: <a href="https://water.usgs.gov/nawqa/sparrow/" target="blank">https://water.usgs.gov/nawqa/sparrow/</a>
+                                <br /> Regional Website: <a href="https://www.usgs.gov/centers/wisconsin-water-science-center/science/sparrow-watershed-modeling-great-lakes-ohio-upper?"
+                                    target="blank">https://www.usgs.gov/centers/wisconsin-water-science-center/science/sparrow-watershed-modeling-great-lakes-ohio-upper?</a>
                             </p>
 
                             <p class="p-meta p-light fullwidth">
                                 <b>Documentation of the SPARROW models for the Midwest Region of the United States </b>
-                                <br/> Robertson, D.M., and Saad, D.A., in review, Spatially explicit models of streamflow, and total nitrogen, total
-                                phosphorus, and suspended sediment transport in streams of the midwestern United States: U.S Geological Survey
-                                Scientific Investigations Report.
+                                <br/> Robertson, D.M., and Saad, D.A., in review, Spatially referenced models of streamflow, and nitrogen, phosphorus, and
+                                suspended sediment load in streams of the midwestern United States: U.S Geological Survey Scientific Investigations
+                                Report.
                                 
                                <!--<a href="http://pubs.usgs.gov/sir/2013/5102/" target="_blank">http://pubs.usgs.gov/sir/2013/5102/</a>-->
                                <!-- <b>Documentation of the SPARROW model</b>
@@ -189,8 +191,8 @@
                             <h4 style="margin: 0; padding: 0;">Dale M. Robertson</h4>
                             <p class="p-light fullwidth">
                                 <b>Research Hydrologist</b>
+                                <br /> U.S. Geological Survey
                                 <br/> 608-821-3867
-                                <br/> U.S. Geological Survey  
                                 <br/><a href="mailto:dzrobert@usgs.gov">dzrobert@usgs.gov</a>
                                 <br/>
                                 <a href="https://www.usgs.gov/staff-profiles/dale-m-robertson" target="blank">https://www.usgs.gov/staff-profiles/dale-m-robertson</a>
@@ -214,16 +216,20 @@
                             </br>
 
                             <p class="p-meta p-light fullwidth">
-                                <b>Incremental Load</b><br/> The predicted mean flow (cubic feet per second) or mean annual load of the constituent (kilograms or metric tons per
-                                year) leaving a stream reach that reflects only those sources contributed from within the incremental drainage area of
-                                that reach. The incremental value includes the effects of in-stream attenuation processes associated with one half of
+                                <b>Incremental Load</b><br/> The predicted mean daily flow (cubic feet per second) or mean annual load of the constituent (kilograms or metric tons
+                                per year) leaving a stream reach that reflects only those sources contributed from within the incremental drainage area
+                                of that reach. The incremental value includes the effects of in-stream attenuation processes associated with one half of
                                 the incremental reach length. Incremental drainage areas are represented here as “catchments”.
                             </p>
                             <p class="p-meta p-light fullwidth">
-                                <b>Accumulated Load</b><br/> The predicted mean flow (cubic feet per second) or mean annual load of the constituent (kilograms or metric tons per
-                                year) leaving a stream reach that reflects the accumulated mass of the constituent contributed by all sources in the
+                                <b>Accumulated Load</b><br/> The predicted mean daily flow (cubic feet per second) or mean annual load of the constituent (kilograms or metric tons
+                                per year) leaving a stream reach that reflects the accumulated mass of the constituent contributed by all sources in the
                                 total drainage area upstream of the reach outlet. The accumulated value includes the effects of in-stream attenuation
                                 processes in all upstream reaches.
+                            </p>
+                            <p class="p-meta p-light fullwidth">
+                                <b>Concentration</b><br /> Concentration is based on accumulated load values. It is computed as mean annual load of the constituent divided by the
+                                predicted mean daily flow. Units are milligrams per liter.
                             </p>
                             <p class="p-meta p-light fullwidth">
                                 <b>Aggregated Load</b><br/> For results grouped by 8-digit HUC, tributary outlet, major drainage area or state, aggregated load represents the sum
@@ -231,7 +237,9 @@
                             </p>
                             <p class="p-meta p-light fullwidth">
                                 <b>Incremental Yield</b><br/> The Incremental Load divided by the incremental drainage area of the reach. Units are millimeters per year, kilograms
-                                per square kilometer per year or metric tons per square kilometer per year.
+                                per square kilometer per year or metric tons per square kilometer per year. Note: Incremental yield along the US/Canada
+                                border may be overestimated because some of the source inputs represent Canada area that is not included in the
+                                incremental drainage areas reported here.
                             </p>
                             <p class="p-meta p-light fullwidth">
                                 <b>Accumulated Yield</b><br/> The Accumulated Load divided by the total drainage area upstream of the reach outlet. Units are millimeters per year,
@@ -250,12 +258,16 @@
                                 <b>Delivered Accumulated Load</b><br/> Accumulated load multiplied by the delivery fraction. Delivery fraction is defined below.
                             </p>
                             <p class="p-meta p-light fullwidth">
-                                <b>Delivered Aggregated Load</b><br/> For results grouped by 8-digit HUC, tributary outlet, major drainage area or state, delivered aggregated load represents
+                                <b>Delivered Aggregated Load</b><br/> Delivered Aggregated Load
+                                For results grouped by 8-digit HUC, tributary outlet, major drainage area or state, delivered aggregated load represents
                                 the sum of delivered incremental loads for those selected areas. Delivery fraction is defined below.
+
                             </p>
                             <p class="p-meta p-light fullwidth">
                                 <b>Delivered Incremental Yield</b><br/> The Delivered Incremental Load divided by the incremental drainage area of the reach. Units are millimeters per year,
-                                kilograms per square kilometer per year or metric tons per square kilometer per year.
+                                kilograms per square kilometer per year or metric tons per square kilometer per year. Note: Delivered incremental yield
+                                along the US/Canada border may be overestimated because some of the source inputs represent Canada area that is not
+                                included in the incremental drainage areas reported here.
                             </p>
                             <p class="p-meta p-light fullwidth">
                                 <b>Delivered Accumulated Yield</b><br/> The Delivered Accumulated Load divided by the total drainage area upstream of the reach outlet or total of the "grouped
@@ -264,12 +276,14 @@
 
                             </p>
                             <p class="p-meta p-light fullwidth">
-                                <b>Delivered Aggregated Yield</b><br/> The Delivered Aggregated Load divided by the sum of the “grouped by” incremental drainage areas. Units are millimeters
+                                <b>Delivered Aggregated Yield</b><br/> TDelivered Aggregated Yield
+                                The Delivered Aggregated Load divided by the sum of the “grouped by” incremental drainage areas. Units are millimeters
                                 per year, kilograms per square kilometer per year or metric tons per square kilometer per year.
+
                             </p>
                             <p class="p-meta p-light fullwidth">
 
-                                <b>Delivery Fraction (definition)</b><br/> TThe fraction of the flow or load leaving a reach that is not attenuated or removed by natural processes during
+                                <b>Delivery Fraction (definition)</b><br/> The fraction of the flow or load leaving a reach that is not attenuated or removed by natural processes during
                                 downstream transport to a specified downstream target reach. A delivery fraction of 1 indicates that 100 percent of the
                                 flow or load leaving the reach is delivered to the downstream target.
                                
