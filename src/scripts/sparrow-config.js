@@ -12,7 +12,7 @@ var appVersion = "v0.9.0"; // could pull this from code/package.json
 var serviceBaseURL =
     "https://sparrowtest.wim.usgs.gov/arcgis/rest/services/SparrowMidwest/SparrowMidwest/MapServer/"; //important! UPDATE rest service URL
 var chartUnits = " (kg/yr.)";
-var chartFeatureMax = 2500; //chart will not be available if more than this many polygons are showing on map.
+var chartFeatureMax = 6000; //chart will not be available if more than this many polygons are showing on map.
 
 var groupResultsInitIndex = 1; //sets the default layer for the application.  In this case service layer 1 == HUC8.
 
@@ -390,7 +390,7 @@ var Group1 = [
     {
         field: "GP1_AY",
         name: mappedDefinitions.ay,
-        chartOutfields: getFields(phosphorusSourceDefinitions, mappedDefinitions, "day", "gp1")
+        chartOutfields: getFields(phosphorusSourceDefinitions, mappedDefinitions, "ay", "gp1")
     },
     {
         field: "GP1_DAY",

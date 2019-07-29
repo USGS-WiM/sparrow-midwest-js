@@ -1846,7 +1846,7 @@ require([
 
         //push label array into series
         $.each(chartLabelsArr, function(index, value) {
-            series.push({ name: value, turboThreshold: 3000 });
+            series.push({ name: value, turboThreshold: 6001 });
         });
 
         //chartArr is a multi-dimensional array.  Each item in chartArr is an array of series data.
@@ -1991,7 +1991,7 @@ require([
 
         $("#chartClose").on("click", function() {
             app.map.graphics.clear();
-            if (app.polygonResponseCount > 2500 && $("#chartButton").prop("disabled", false)) {
+            if (app.polygonResponseCount > chartFeatureMax && $("#chartButton").prop("disabled", false)) {
                 $("#chartButton")
                     .prop("disabled", true)
                     .css("pointer-events", "none")
