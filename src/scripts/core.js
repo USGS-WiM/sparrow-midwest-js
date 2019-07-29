@@ -1170,12 +1170,12 @@ require([
                                     "<div><b>Beale or Fluxmaster Estimated TP Load " +
                                     chartUnits +
                                     ": </b>" +
-                                    responseObj.feature.attributes.ACTUAL +
+                                    Math.round(responseObj.feature.attributes.ACTUAL) +
                                     "</div><br>" +
                                     "<div><b>SPARROW Estimated TP Load " +
                                     chartUnits +
                                     ": </b>" +
-                                    responseObj.feature.attributes.PLOAD_TOTA +
+                                    Math.round(responseObj.feature.attributes.PLOAD_TOTA) +
                                     "</div><br>"
                             );
 
@@ -1207,12 +1207,12 @@ require([
                                     "<div><b>Beale or Fluxmaster Estimated TN Load " +
                                     chartUnits +
                                     ": </b>" +
-                                    responseObj.feature.attributes.ACTUAL +
+                                    Math.round(responseObj.feature.attributes.ACTUAL) +
                                     "</div><br>" +
                                     "<div><b>SPARROW Estimated TN Load " +
                                     chartUnits +
                                     ": </b>" +
-                                    responseObj.feature.attributes.PLOAD_TOTA +
+                                    Math.round(responseObj.feature.attributes.PLOAD_TOTA) +
                                     "</div><br>"
                             );
 
@@ -1241,11 +1241,11 @@ require([
                                 "</div><br>" +
                                 "<div><b>Average Measured Streamflow (cfs): " +
                                 "</b>" +
-                                responseObj.feature.attributes.ACTUAL +
+                                Math.round(responseObj.feature.attributes.ACTUAL) +
                                 "</div><br>" +
                                 "<div><b>SPARROW Estimated Average Streamflow (cfs): " +
                                 "</b>" +
-                                responseObj.feature.attributes.PLOAD_TOTA +
+                                Math.round(responseObj.feature.attributes.PLOAD_TOTA) +
                                 "</div><br>"
                             );
 
@@ -1277,7 +1277,7 @@ require([
                                 "</div><br>" +
                                 "<div><b>Beale or Fluxmaster Estimated SSC or TSS Load (MT/yr): " +
                                 "</b>" +
-                                responseObj.feature.attributes.ACTUAL_MT +
+                                Math.round(responseObj.feature.attributes.ACTUAL_MT) +
                                 "</div><br>" +
                                 "<div><b>SPARROW Estimated Factor for converting TSS to SSC: " +
                                 "</b>" +
@@ -1285,7 +1285,7 @@ require([
                                 "</div><br>" +
                                 "<div><b>SPARROW Estimated SSC Load (MT/yr): " +
                                 "</b>" +
-                                responseObj.feature.attributes.PLOAD_MT +
+                                Math.round(responseObj.feature.attributes.PLOAD_MT) +
                                 "</div><br>"
                             );
 
@@ -1738,7 +1738,30 @@ require([
                     return "GP1";
                 }
             case 4:
-                return "ST";
+                /*check AOI selections then set the query field to match the displayed layer target field*/
+                if ($("#grp3-select")[0].selectedIndex > 0 && $("#grp2-select")[0].selectedIndex > 0 && $("#grp1-select")[0].selectedIndex > 0) {
+                    return "SG3"
+                }
+                else if ($("#grp3-select")[0].selectedIndex > 0 && $("#grp1-select")[0].selectedIndex > 0) {
+                    return "SG3";
+                }
+                else if ($("#grp3-select")[0].selectedIndex > 0 && $("#grp2-select")[0].selectedIndex > 0) {
+                    return "SG3";
+                }
+                else if ($("#grp2-select")[0].selectedIndex > 0 && $("#grp1-select")[0].selectedIndex > 0) {
+                    return "SG2"; 
+                }
+                else if ($("#grp3-select")[0].selectedIndex > 0) {
+                    return "SG3"; 
+                }
+                else if ($("#grp2-select")[0].selectedIndex > 0) {
+                    return "SG2";
+                }
+                else if ($("#grp1-select")[0].selectedIndex > 0) {
+                    return "SG1";
+                } else {
+                    return "ST"
+                }
         }
     }
 
@@ -2327,7 +2350,6 @@ require([
                                     var visibleLayers = app.map.getLayer("SparrowRanking").visibleLayers[0];
                                     var URL = app.map.getLayer("SparrowRanking").url;
                                     var fieldName = switchWhereField($("#groupResultsSelect")[0].selectedIndex);
-
                                     var queryTask;
                                     queryTask = new esri.tasks.QueryTask(URL + visibleLayers.toString());
 
