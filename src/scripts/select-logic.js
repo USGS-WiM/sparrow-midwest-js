@@ -885,8 +885,8 @@ function getExtraOutfields(outfieldsArr, sparrowLayerId) {
         case 27:
             //CATCHMENTS
             //finalChartArr.push("PNAME");
-            finalChartArr.push("CUMAREAKM2");
             finalChartArr.push("INCAREAKM2");
+            finalChartArr.push("CUMAREAKM2");
             finalChartArr.push("COMID");
             break;
         case 1:
@@ -1007,7 +1007,7 @@ function generateRenderer() {
             query,
             function(count) {
                 app.polygonResponseCount = count;
-                if (app.polygonResponseCount > 2500 && $("#chartButton").prop("disabled", false)) {
+                if (app.polygonResponseCount > chartFeatureMax && $("#chartButton").prop("disabled", false)) {
                     $("#chartButton")
                         .prop("disabled", true)
                         .css("pointer-events", "none");
@@ -1024,7 +1024,7 @@ function generateRenderer() {
                 }
 
                 if ($("#chartWindowDiv").css("visibility") == "visible") {
-                    if (app.polygonResponseCount > 2500) {
+                    if (app.polygonResponseCount > chartFeatureMax ) {
                         $("#toast_title").html("Warning");
                         $("#toast_body").html(
                             "Cannot show chart for " +

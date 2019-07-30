@@ -16,7 +16,7 @@ action "GitHub Action for npm" {
 
 action "GitHub Action for AWS" {
   uses = "actions/aws/cli@efb074ae4510f2d12c7801e4461b65bf5e8317e6"
-  needs = ["Github Action for npm"]
+  needs = ["GitHub Action for npm"]
   args = "s3 cp $GITHUB_WORKSPACE/build/ s3://test.wim.usgs.gov/sparrow-midwest-test/ --recursive"
   secrets = ["AWS_ACCESS_KEY_ID", "AWS_SECRET_ACCESS_KEY"]
 }
