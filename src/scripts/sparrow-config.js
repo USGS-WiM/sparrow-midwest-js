@@ -258,6 +258,7 @@ var sedimentToColors = ["#450b05", "#8c1508", "#840c00", "#2a1f00", "#624e00", "
 
 function getFields(sourceDefObj, mappedDefObj, definitionCode, group) {
     var fieldsArr = [];
+    var tempArr = [];
     //check to make sure catchment and aggregate layer are handled appropriately by checking if group is in global aggregateDefinitions object.
     if (!aggregateDefinitions.hasOwnProperty(group.toLowerCase())) {
         fieldsArr.push({ attribute: group.toUpperCase(), label: mappedDefObj.comid });
@@ -268,8 +269,25 @@ function getFields(sourceDefObj, mappedDefObj, definitionCode, group) {
     } else {
         fieldsArr.push({ attribute: group.toUpperCase(), label: aggregateDefinitions[group] });
         for (var key in sourceDefObj) {
-            fieldsArr.push({ attribute: group.toUpperCase() + "_" + definitionCode.toUpperCase() + "_" + key.toUpperCase(), label: mappedDefObj[definitionCode.toLowerCase()] + " " + sourceDefObj[key] });
+            //create temp array to hold special sediment DAL and DAY sources that need to be reordered out of the standard JS sequence
+            if (key == "s0" || key == "10" || key == "11" || key == "12" || key == "13" || key == "14") {
+                tempArr.push({ attribute: group.toUpperCase() + "_" + definitionCode.toUpperCase() + "_" + key.toUpperCase(), label: mappedDefObj[definitionCode.toLowerCase()] + " " + sourceDefObj[key] });
+                //find arrays with s0 in them to get them in the sources back in the correct order
+                tempArr.filter(function (obj) {
+                    if (obj.attribute.includes("S0")) {
+                        tempArr.reverse();
+                    }
+                }); 
+            }
+            else {
+                fieldsArr.push({ attribute: group.toUpperCase() + "_" + definitionCode.toUpperCase() + "_" + key.toUpperCase(), label: mappedDefObj[definitionCode.toLowerCase()] + " " + sourceDefObj[key] });
+            }
         }
+    }
+    if (tempArr.length > 0) {
+        //merge arrays to handle DAL and DAY special cases.  concat wasn't working :-\
+        Array.prototype.push.apply(fieldsArr, tempArr);
+        //console.log(fieldsArr);
     }
     return fieldsArr;
 }
