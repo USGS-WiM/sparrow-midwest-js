@@ -177,8 +177,8 @@ var nitrogenSourceDefinitions = {
     s2: "Urban Land",
     s3: "Farm Fertilizer",
     s4: "Manure",
-    s5: "Atmospheric Deposition",
-    s6: "Nitrogen Fixing Crops",
+    s5: "Nitrogen Fixing Crops",  
+    s6: "Atmospheric Deposition",
     s7: "Canada"
 };
 
