@@ -55,6 +55,8 @@ function loadEventHandlers() {
     /* GROUP RESULTS (AGGREGATE LAYER) EVENTS */
     //set initial Displayed Metric options
     $("#groupResultsSelect").on("loaded.bs.select", function() {
+        $("#groupResultsSelect").selectpicker('val', groupResultsLabels.b); //set to huc8 and refresh
+        $("#groupResultsSelect").selectpicker('refresh');
         populateMetricOptions($("#groupResultsSelect")[0].selectedIndex);
         updateSourceOptions();
         generateRenderer();

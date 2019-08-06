@@ -4,6 +4,8 @@ _________________Created by emyers 10/2016_____________
 
 $(".selectpicker").selectpicker();
 
+
+
 //Change Displayed Metric select options
 function populateMetricOptions(selectedIndex) {
     var metricOptions;
