@@ -147,10 +147,10 @@ var mappedDefinitions = {
 
 var mappedDefinitions_q = {
     area: "Aggregated area (km2)",
-    al: "Accumulated flow (cfs)",
-    ay: "Accumulated yield (mm/yr)",
-    dal: "Delivered accumulated flow (cfs)",
-    day: "Delivered accumulated yield (mm/yr)"
+    al: "Aggregated flow (cfs)",
+    ay: "Aggregated yield (mm/yr)",
+    dal: "Delivered aggregated flow (cfs)",
+    day: "Delivered aggregated yield (mm/yr)"
 };
 
 var mappedDefinitions_ss = {
@@ -244,17 +244,14 @@ var sedimentSourceDefinitions_DAY = {
     3. find coordinating colors (using some sort of gradient generator) and add to the 
       **ToColors arrays. The code will order it from light --> dark, so don't worry about that.
 **/
+//used for individual sources grayscale color blocks
+var fromSourceColor = "#FFFFFF";
+var toSourceColor = "#000000";
+
 var phosColors = ["#BF0000", "#FFCCFF", "#FFEC99", "#663100", "#A2EB85", "#2980B9"];
-var phosToColors = ["#580000", "#4c044c", "#6e5900", "#120900", "#174f00", "#001d30"];
-
 var nitroColors = ["#BF0000", "#FFCCFF", "#FFEC99", "#663100", "#08612e", "#1ABC9C", "#2980B9"];
-var nitroToColors = ["#580000", "#4c044c", "#6e5900", "#120900", "#001f0d", "#004d3e", "#001d30"];
-
 var streamflowColors = ["#579689", "#BF0000", "#BB8FCE", "#2ECC71", "#2980B9"];
-var streamflowToColors = ["#004134", "#580000", "#3e0059", "#002d24", "#001d30"];
-
 var sedimentColors = ["#78281f", "#ec7063", "#fadbd8", "#a87e06", "#c7a726", "#f0e27e", "#08612e", "#1ABC9C", "#b6e4db", "#BB8FCE", "#2980B9", "#f58833"];
-var sedimentToColors = ["#450b05", "#8c1508", "#840c00", "#2a1f00", "#624e00", "#6c5f01", "#002811", "#004d3e", "#32514b", "#3e0059", "#001d30", "#743707"];
 
 function getFields(sourceDefObj, mappedDefObj, definitionCode, group) {
     var fieldsArr = [];
@@ -298,6 +295,11 @@ function getFields(sourceDefObj, mappedDefObj, definitionCode, group) {
 /*DOCUMENTATION NOTES: each 'field below should correspond to a "Mapped Attribute" in the cats_tp_attribute_Definitions.xlsx file.  These are the attributes that will be displayed on the map. */
 var Catchments = [
     {
+        field: "INCL",
+        name: catchmentDefinitions.incl,
+        chartOutfields: getFields(phosphorusSourceDefinitions, catchmentDefinitions, "incl", "comid")
+    },
+    {
         field: "ACCL",
         name: catchmentDefinitions.accl,
         chartOutfields: getFields(phosphorusSourceDefinitions, catchmentDefinitions, "accl", "comid")
@@ -311,11 +313,7 @@ var Catchments = [
 
         ]
     },
-    {
-        field: "INCL",
-        name: catchmentDefinitions.incl,
-        chartOutfields: getFields(phosphorusSourceDefinitions, catchmentDefinitions, "incl", "comid")
-    },
+   
     {
         field: "ACCY",
         name: catchmentDefinitions.accy,
