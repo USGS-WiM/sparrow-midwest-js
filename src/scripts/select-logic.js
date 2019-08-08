@@ -847,10 +847,10 @@ function getLegendLabels(sparrowLayerId) {
             return "Total Nitrogen";
         }
         if (sparrowLayerId >= 18 && sparrowLayerId <= 26) {
-            return "Total Streamflow";
+            return "Streamflow";
         }
         if (sparrowLayerId > 26) {
-            return "Total Suspended Sediment";
+            return "Suspended Sediment";
         }
     }
     var nutrientModel = setModel(sparrowLayerId);

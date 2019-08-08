@@ -37,7 +37,7 @@ var groupResultsLabels = {
 };
 
 //download locations
-var rootURL = "https://test.wim.usgs.gov/sparrow-midwest-test/downloads/";
+var rootURL = "https://sparrow.wim.usgs.gov/midwest/downloads/";
 /*var phosphorusShapefileURL = "https://sparrow.wim.usgs.gov/mid-continental/downloads/midcont_shapefiles_phosphorus.zip";
 var nitrogenShapefileURL = "https://sparrow.wim.usgs.gov/mid-continental/downloads/midcont_shapefiles_nitrogen.zip";*/
 var phosCalibrationURL = rootURL + "midwest_calibration_sites_tp.zip";
@@ -248,10 +248,10 @@ var sedimentSourceDefinitions_DAY = {
 var fromSourceColor = "#FFFFFF";
 var toSourceColor = "#000000";
 
-var phosColors = ["#BF0000", "#FFCCFF", "#FFEC99", "#663100", "#A2EB85", "#2980B9"];
-var nitroColors = ["#BF0000", "#FFCCFF", "#FFEC99", "#663100", "#08612e", "#1ABC9C", "#2980B9"];
-var streamflowColors = ["#579689", "#BF0000", "#BB8FCE", "#2ECC71", "#2980B9"];
-var sedimentColors = ["#78281f", "#ec7063", "#fadbd8", "#a87e06", "#c7a726", "#f0e27e", "#08612e", "#1ABC9C", "#b6e4db", "#BB8FCE", "#2980B9", "#f58833"];
+var phosColors = ["#BF0000", "#FFCCFF", "#FFEC99", "#663100", "#A2EB85", "#999999"];
+var nitroColors = ["#BF0000", "#FFCCFF", "#FFEC99", "#663100", "#c9daf8", "#d6ad00", "#999999"];
+var streamflowColors = ["#2980b9", "#BF0000", "#BB8FCE", "#2ECC71", "#999999"];
+var sedimentColors = ["#ff3fff", "#ffb9ff", "#f2dcdb", "#d6ad00", "#ffe885", "#fff811", "#08612e", "#1ABC9C", "#b6e4db", "#BB8FCE", "#999999", "#f58833"];
 
 function getFields(sourceDefObj, mappedDefObj, definitionCode, group) {
     var fieldsArr = [];
