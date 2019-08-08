@@ -45,6 +45,9 @@ var nitroCalibrationURL = rootURL + "midwest_calibration_sites_tn.zip";
 var streamflowCalibrationURL = rootURL + "midwest_calibration_sites_q.zip";
 var sedimentCalibrationURL = rootURL + "midwest_calibration_sites_ss.zip";
 
+/*from new updates, added 8/8*/
+var midwestModelsURL = "https://doi.org/10.5066/P93QMXC9";
+
 var tableOutFields = [
     { field: "FID", name: "Unique Feature Id" },
     { field: "GRP1", name: "Main River Basin" },
