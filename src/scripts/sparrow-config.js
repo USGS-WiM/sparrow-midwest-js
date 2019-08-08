@@ -6,7 +6,7 @@ THIS CONFIG REMOVES CATCHMENT AND AGGREGATE LABELS FROM THE CHARTOUTFIELS OBJECT
 ALSO uses SPARROWID and ST_SPARRID in place of COMID, ST_COMID
 */
 
-var appTitle = "2012 SPARROW Models for the Midwest: Streamflow, Total Nitrogen, Total Phosphorus and Suspended Sediment";
+var appTitle = "2012 SPARROW Models for the Midwest: Total Phosphorus, Total Nitrogen, Suspended Sediment, and Streamflow";
 var appVersion = "v0.9.0"; // could pull this from code/package.json
 
 var serviceBaseURL =
@@ -44,6 +44,9 @@ var phosCalibrationURL = rootURL + "midwest_calibration_sites_tp.zip";
 var nitroCalibrationURL = rootURL + "midwest_calibration_sites_tn.zip";
 var streamflowCalibrationURL = rootURL + "midwest_calibration_sites_q.zip";
 var sedimentCalibrationURL = rootURL + "midwest_calibration_sites_ss.zip";
+
+/*from new updates, added 8/8*/
+var midwestModelsURL = "https://doi.org/10.5066/P93QMXC9";
 
 var tableOutFields = [
     { field: "FID", name: "Unique Feature Id" },
