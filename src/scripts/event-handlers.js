@@ -21,16 +21,10 @@ function loadEventHandlers() {
         } */
     });
     /*END RADIO EVENTS*/
-
     //UPDATE: important! make sure the file name is updated_____________________________________________________
-    $("#phosphorusDownload").click(function() {
+    $("#midwestModelsDownload").click(function() {
         // hope the server sets Content-Disposition: attachment!
-        window.location = phosphorusShapefileURL;
-    });
-    //UPDATE: important! make sure the file name is updated_____________________________________________________
-    $("#nitrogenDownload").click(function() {
-        // hope the server sets Content-Disposition: attachment!
-        window.location = nitrogenShapefileURL;
+        window.open(midwestModelsURL);
     });
     $("#phosphorusCalibrationDownload").click(function() {
         // hope the server sets Content-Disposition: attachment!
