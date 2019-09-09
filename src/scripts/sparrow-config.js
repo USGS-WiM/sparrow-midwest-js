@@ -130,7 +130,6 @@ var catchmentDefinitions_ss = {
     st_comid: "SPARROW Reach ID by State",
     pname: "Catchment Name",
     accl: "Accumulated load (MT)",
-    concentrat: "Concentration, mg/L",
     incl: "Incremental load (MT)",
     accy: "Accumulated yield (MT/km2)",
     incy: "Incremental yield (MT/km2)",
@@ -180,7 +179,7 @@ var nitrogenSourceDefinitions = {
     s2: "Urban Land",
     s3: "Farm Fertilizer",
     s4: "Manure",
-    s5: "Nitrogen Fixing Crops",  
+    s5: "Nitrogen Fixing Crops",
     s6: "Atmospheric Deposition",
     s7: "Canada"
 };
@@ -252,7 +251,7 @@ var fromSourceColor = "#FFFFFF";
 var toSourceColor = "#000000";
 
 var phosColors = ["#BF0000", "#FFCCFF", "#FFEC99", "#663100", "#A2EB85", "#999999"];
-var nitroColors = ["#BF0000", "#FFCCFF", "#FFEC99", "#663100", "#c9daf8", "#d6ad00", "#999999"];
+var nitroColors = ["#BF0000", "#FFCCFF", "#FFEC99", "#663100", "#d6ad00", "#c9daf8", "#999999"];
 var streamflowColors = ["#2980b9", "#BF0000", "#BB8FCE", "#2ECC71", "#999999"];
 var sedimentColors = ["#ff3fff", "#ffb9ff", "#f2dcdb", "#d6ad00", "#ffe885", "#fff811", "#08612e", "#1ABC9C", "#b6e4db", "#BB8FCE", "#999999", "#f58833"];
 
@@ -1103,55 +1102,46 @@ var Group1_st_q = [
 
 ////BEGIN SUSPENDED SEDIMENT LAYER GROUPS______________________________________________________________________________________________________________________________
 var Catchments_ss = [
-    {
-        field: "ACCL",
-        name: catchmentDefinitions_ss.accl,
-        chartOutfields: getFields(sedimentSourceDefinitions, catchmentDefinitions_ss, "accl", "comid")
-    },
-    {
-        field: "CONCENTRAT",
-        name: catchmentDefinitions_ss.concentrat,
-        chartOutfields: [
-            { attribute: "COMID", label: catchmentDefinitions_ss.comid },
-            { attribute: "CONCENTRAT", label: catchmentDefinitions_ss.concentrat + " Total" }
-
-        ]
-    },
-    {
-        field: "INCL",
-        name: catchmentDefinitions_ss.incl,
-        chartOutfields: getFields(sedimentSourceDefinitions, catchmentDefinitions_ss, "incl", "comid")
-    },
-    {
-        field: "ACCY",
-        name: catchmentDefinitions_ss.accy,
-        chartOutfields: getFields(sedimentSourceDefinitions, catchmentDefinitions_ss, "accy", "comid")
-    },
-    {
-        field: "INCY",
-        name: catchmentDefinitions_ss.incy,
-        chartOutfields: getFields(sedimentSourceDefinitions, catchmentDefinitions_ss, "incy", "comid")
-    },
-    {
-        field: "DACCL",
-        name: catchmentDefinitions_ss.daccl,
-        chartOutfields: getFields(sedimentSourceDefinitions, catchmentDefinitions_ss, "daccl", "comid")
-    },
-    {
-        field: "DACCY",
-        name: catchmentDefinitions_ss.daccy,
-        chartOutfields: getFields(sedimentSourceDefinitions, catchmentDefinitions_ss, "daccy", "comid")
-    },
-    {
-        field: "DINCL",
-        name: catchmentDefinitions_ss.dincl,
-        chartOutfields: getFields(sedimentSourceDefinitions, catchmentDefinitions_ss, "dincl", "comid")
-    },
-    {
-        field: "DINCY",
-        name: catchmentDefinitions_ss.dincy,
-        chartOutfields: getFields(sedimentSourceDefinitions, catchmentDefinitions_ss, "dincy", "comid")
-    }
+  {
+      field: "ACCL",
+      name: catchmentDefinitions_ss.accl,
+      chartOutfields: getFields(sedimentSourceDefinitions, catchmentDefinitions_ss, "accl", "comid")
+  },
+  {
+      field: "INCL",
+      name: catchmentDefinitions_ss.incl,
+      chartOutfields: getFields(sedimentSourceDefinitions, catchmentDefinitions_ss, "incl", "comid")
+  },
+  {
+      field: "ACCY",
+      name: catchmentDefinitions_ss.accy,
+      chartOutfields: getFields(sedimentSourceDefinitions, catchmentDefinitions_ss, "accy", "comid")
+  },
+  {
+      field: "INCY",
+      name: catchmentDefinitions_ss.incy,
+      chartOutfields: getFields(sedimentSourceDefinitions, catchmentDefinitions_ss, "incy", "comid")
+  },
+  {
+      field: "DACCL",
+      name: catchmentDefinitions_ss.daccl,
+      chartOutfields: getFields(sedimentSourceDefinitions, catchmentDefinitions_ss, "daccl", "comid")
+  },
+  {
+      field: "DACCY",
+      name: catchmentDefinitions_ss.daccy,
+      chartOutfields: getFields(sedimentSourceDefinitions, catchmentDefinitions_ss, "daccy", "comid")
+  },
+  {
+      field: "DINCL",
+      name: catchmentDefinitions_ss.dincl,
+      chartOutfields: getFields(sedimentSourceDefinitions, catchmentDefinitions_ss, "dincl", "comid")
+  },
+  {
+      field: "DINCY",
+      name: catchmentDefinitions_ss.dincy,
+      chartOutfields: getFields(sedimentSourceDefinitions, catchmentDefinitions_ss, "dincy", "comid")
+  }
 ];
 
 var Group3_ss = [
