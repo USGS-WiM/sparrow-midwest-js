@@ -182,7 +182,9 @@
 
                             <p class="p-meta p-light fullwidth">
                                 <b>Documentation of the SPARROW models for the Midwest Region of the United States</b>
-                                <br>Robertson, D.M., and Saad, D.A., in review, Spatially referenced models of streamflow, and nitrogen, phosphorus, and suspended sediment load in streams of the midwestern United States: U.S Geological Survey Scientific Investigations Report.<br><br>
+                                <br>Midwest Model Documentation: Robertson, D.M., and Saad, D.A., 2019, Spatially referenced models of streamflow and
+                                nitrogen, phosphorus, and suspended sediment loads in streams of the Midwestern United States: U.S. Geological Survey
+                                Scientific Investigation Report 2019-5114 <a href="https://doi.org/10.3133/sir20195114" target="blank">https://doi.org/10.3133/sir20195114</a>.<br><br>
                                 Saad, D.A., and Robertson, D.M., 2019, SPARROW model inputs and simulated streamflow, nutrient and suspended sediment loads in streams of the Midwest Region of the United States, 2012 Base Year: U.S. Geological Survey data release, <a href="https://doi.org/10.5066/P93QMXC9" target="blank">https://doi.org/10.5066/P93QMXC9</a>.
                             </p>
 
@@ -207,7 +209,8 @@
                             <p class="p-meta p-light fullwidth">
                                    
                                 <b>The relationship between the scale of reporting of model results and uncertainty:</b>
-                                <br/>Model results can be displayed at several watershed scales. The smallest scale that can be used for reporting is the catchment scale at which model computations are made.  For the Midwest models these are NHD catchments with typical watershed size of about 2.5 square kilometers. Results can be aggregated up to larger scales for reporting: tributary outlet, HUC8 (typical watershed size is 3,700 square kilometers), state, or selected watersheds within the modeled area. The SPARROW model is, in theory, scale independent. However, the uncertainty associated with SPARROW predictions is expected to increase for drainage basin sizes smaller than those of stream monitoring sites used to calibrate the model.  For the Midwest streamflow model, the drainage areas of the smallest calibration sites are typically in the range of 5 to 50 square kilometers.  For the Total Nitrogen, Total Phosphorus and Suspended Sediment models, the drainage areas of the smallest calibration sites are typically in the range of 10 to 100 square kilometers.  The uncertainty associated with incremental load and yield predictions at the catchment scale is therefore expected to be larger than the uncertainty associated with predictions at larger scales.
+                                <br/>Model results can be displayed at several watershed scales. The smallest scale that can be used for reporting is the catchment scale at which model computations are made.  For the Midwest models these are NHD catchments with typical watershed size of about 2.5 square kilometers. Results can be aggregated up to larger scales for reporting: tributary outlet, HUC8 (typical watershed size is 3,700 square kilometers), state, or selected watersheds within the modeled area. The SPARROW model is, in theory, scale independent. However, the uncertainty associated with SPARROW predictions is expected to increase for drainage basin sizes smaller than those of stream monitoring sites used to calibrate the model.  For the Midwest streamflow model, the drainage areas of the smallest calibration sites are typically in the range of 5 to 50 square kilometers.  For the Total Nitrogen, Total Phosphorus and Suspended Sediment models, the drainage areas of the smallest calibration sites are typically in the range of 10 to 100 square kilometers.  The uncertainty associated with incremental load and yield predictions at the catchment scale is therefore expected to be larger than the uncertainty associated with predictions at larger scales. Additional information regarding model limitations can be found in the "Model Limitations and Future SPARROW Model
+                                Development" section of Robertson and Saad, 2019 (<a href="https://doi.org/10.3133/sir20195114" target="_blank">https://doi.org/10.3133/sir20195114</a>).
                             </p>
                             <br/>
                         </div>
@@ -259,29 +262,46 @@
                                 <b>Accumulated Yield</b><br/>The Accumulated Flow or Load divided by the total drainage area upstream of the reach outlet. Units are millimeters per year, kilograms per square kilometer per year or metric tons per square kilometer per year.
                             </p>
                             <p class="p-meta p-light fullwidth">
-                                <b>Aggregated Yield</b><br/>The Aggregated Flow or Load divided by the sum of the "grouped by" incremental drainage areas. Units are millimeters per year, kilograms per square kilometer per year or metric tons per square kilometer per year.
+                                <b>Aggregated Yield</b><br />The Aggregated Flow or Load divided by the sum of the "grouped by" incremental drainage
+                                areas. Units are millimeters per year, kilograms per square kilometer per year or metric tons per square kilometer
+                                per year.
                             </p>
                             <p class="p-meta p-light fullwidth">
-                                <b>Delivered Incremental Flow or Delivered Incremental Load</b><br/>Incremental flow or load multiplied by the delivery fraction. Delivery fraction is defined below.
+                                <b>Delivery Fraction (definition)</b><br />The fraction of the flow or load leaving a reach that is not attenuated
+                                or removed by natural processes during downstream transport to a specified downstream target reach. A delivery
+                                fraction of 1 indicates that 100 percent of the flow or load leaving the reach is delivered to the downstream
+                                target.
+                                For delivered results shown here, the downstream targets represent the Gulf of Mexico, Great Lakes or stream outlets
+                                at the US/Canada border.
                             </p>
                             <p class="p-meta p-light fullwidth">
-                                <b>Delivered Accumulated Flow or Delivered Accumulated Load</b><br/>Accumulated flow or load multiplied by the delivery fraction. Delivery fraction is defined below.
+                                <b>Delivered Incremental Flow or Delivered Incremental Load</b><br />Incremental flow or load multiplied by the
+                                delivery fraction.
                             </p>
                             <p class="p-meta p-light fullwidth">
-                                <b>Delivered Aggregated Flow or Delivered Aggregated Load</b><br/>For results grouped by 8-digit HUC, tributary outlet, major drainage area or state, delivered aggregated flow or load represents the sum of delivered incremental flows or loads for those selected areas. Delivery fraction is defined below.
+                                <b>Delivered Accumulated Flow or Delivered Accumulated Load</b><br />Accumulated flow or load multiplied by the
+                                delivery fraction.
                             </p>
                             <p class="p-meta p-light fullwidth">
-                                <b>Delivered Incremental Yield</b><br/>The Delivered Incremental Flow or Load divided by the incremental drainage area of the reach. Units are millimeters per year, kilograms per square kilometer per year or metric tons per square kilometer per year.  Note: Delivered incremental yield along the US/Canada border may be overestimated because some of the source inputs represent Canada area that is not included in the incremental drainage areas reported here.
+                                <b>Delivered Aggregated Flow or Delivered Aggregated Load</b><br />For results grouped by 8-digit HUC, tributary
+                                outlet, major drainage area or state, delivered aggregated flow or load represents the sum of delivered incremental
+                                flows or loads for those selected areas.
                             </p>
                             <p class="p-meta p-light fullwidth">
-                                <b>Delivered Accumulated Yield</b><br/>The Delivered Accumulated Flow or Load divided by the total drainage area upstream of the reach outlet or total of the "grouped by" area. Units are millimeters per year, kilograms per square kilometer per year or metric tons per square kilometer per year.
+                                <b>Delivered Incremental Yield</b><br />The Delivered Incremental Flow or Load divided by the incremental drainage
+                                area of the reach. Units are millimeters per year, kilograms per square kilometer per year or metric tons per square
+                                kilometer per year. Note: Delivered incremental yield along the US/Canada border may be overestimated because some
+                                of the source inputs represent Canada area that is not included in the incremental drainage areas reported here.
                             </p>
                             <p class="p-meta p-light fullwidth">
-                                <b>Delivered Aggregated Yield</b><br/>The Delivered Aggregated Flow or Load divided by the sum of the “grouped by” incremental drainage areas. Units are millimeters per year, kilograms per square kilometer per year or metric tons per square kilometer per year.
+                                <b>Delivered Accumulated Yield</b><br />The Delivered Accumulated Flow or Load divided by the total drainage area
+                                upstream of the reach outlet or total of the "grouped by" area. Units are millimeters per year, kilograms per square
+                                kilometer per year or metric tons per square kilometer per year.
                             </p>
                             <p class="p-meta p-light fullwidth">
-                                <b>Delivery Fraction (definition)</b><br/>The fraction of the flow or load leaving a reach that is not attenuated or removed by natural processes during downstream transport to a specified downstream target reach. A delivery fraction of 1 indicates that 100 percent of the flow or load leaving the reach is delivered to the downstream target.
-                                For delivered results shown here, the downstream targets represent the Gulf of Mexico, Great Lakes or stream outlets at the US/Canada border.                                
+                                <b>Delivered Aggregated Yield</b><br />The Delivered Aggregated Flow or Load divided by the sum of the “grouped by”
+                                incremental drainage areas. Units are millimeters per year, kilograms per square kilometer per year or metric tons
+                                per square kilometer per year.
                             </p>
 
                         </div>

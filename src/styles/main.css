@@ -179,7 +179,7 @@ body {
     position:absolute;
     padding:4px;
     bottom:1.6em;
-    left: 20px;
+    left: 18% !important;
     /*width:250px*/
     /*height:320px;*/
     z-index:1;
@@ -1154,5 +1154,9 @@ Mitch GH Issues Aug 28
     width: 80%;
     display: block;
 }
+
+.esriScalebar{
+    right : 175px !important;
+} 
     
 
