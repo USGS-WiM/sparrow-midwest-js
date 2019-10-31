@@ -32,7 +32,7 @@ var groupResultsLabels = {
     a: "Catchment ID",
     b: "8-Digit hydrologic unit code",
     c: "Tributary",
-    d: "River Basin",
+    d: "Major Drainage Area",
     e: "State"
 };
 
