@@ -37,7 +37,7 @@ var groupResultsLabels = {
 };
 
 //download locations
-var rootURL = "https://sparrow.wim.usgs.gov/midwest/downloads/";
+var rootURL = "https://sparrow.wim.usgs.gov/sparrow-midwest-2012/downloads/";
 /*var phosphorusShapefileURL = "https://sparrow.wim.usgs.gov/mid-continental/downloads/midcont_shapefiles_phosphorus.zip";
 var nitrogenShapefileURL = "https://sparrow.wim.usgs.gov/mid-continental/downloads/midcont_shapefiles_nitrogen.zip";*/
 var phosCalibrationURL = rootURL + "midwest_calibration_sites_tp.zip";
