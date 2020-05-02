@@ -819,6 +819,9 @@
                                 <li role="presentation">
                                     <a id="tableTab" href="#tableTabPane" data-toggle="tab"><i class="fa fa-list"></i>&nbsp;Table</a>
                                 </li>
+                                <li role="presentation">
+                                    <a id="scenarioTab" href="#scenarioTabPane" data-toggle="tab"><i class="fa fa-bar-chart"></i>&nbsp;Scenario Tool</a>
+                                </li>
                             </ul>
                             <div id="chartTabContent" class="tab-content">
                                 <div role="tabpanel" class="tab-pane active" id="chartTabPane">
@@ -827,6 +830,23 @@
                                 <div role="tabpanel" class="tab-pane" id="tableTabPane">
                                     <table class="table tablesorter" id="resultsTable"></table>
                                     <p>Tabular data available for download in chart tab</p>
+                                </div>
+                                <div role="tabpanel" class="tab-pane" id="scenarioTabPane">
+                                        <div id="scenarioWindowContainer" style ="display:inline-flex"></div>
+                                        <div id="scenarioWindowContainer2" style ="display:inline-flex"></div>
+                                        <div>
+                                        </div>
+                                        <div>
+                                            <table id="scenarioTable"></table>
+                                            <div id="scenarioInputs">
+                                            <input class="test" type="text" value="" name="first" style="width: 100px">
+                                            <input class="test" type="text" value="" name="second" style="width: 100px">
+                                            <input class="test" type="text" value="" name="third" style="width: 100px">
+                                            <input class="test" type="text" value="" name="fourth" style="width: 100px">
+                                            <input class="test" type="text" value="" name="fifth" style="width: 100px">
+                                            <input class="test" type="text" value="" name="sixth" style="width: 100px"></div>
+                                            <button id="scenarioBtn">create chart</button>
+                                        </div>
                                 </div>
                             </div>
                         </div>

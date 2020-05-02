@@ -2068,7 +2068,7 @@ require([
         } 
         
 
-        var chart = $("#chartWindowContainer").highcharts();
+        //var chart = $("#chartWindowContainer").highcharts();
 
         $(function() {
             Highcharts.setOptions({
@@ -2425,6 +2425,229 @@ require([
                 },
                 series: series
             });
+
+            $("#scenarioWindowContainer").highcharts({
+                chart: {
+                    type: 'column',
+                    zoomType: 'xy',
+                    backgroundColor: "rgba(255, 255, 255, 0.45)",
+                },
+            
+                title: {
+                    text: null
+                },
+            
+                xAxis: {
+                    labels: {
+                        format: '<div style="text-align:center;">Original Data<br /><br />{value}</div>',
+                        useHTML: true
+                    },
+                    categories: columnLabels,
+                    title: {
+                        text: 'Ranked by ' + labelxSelect()
+                        },
+                    },
+            
+                yAxis: [{
+                    title: {
+                        text: labelySelect()
+                    },
+                }],
+
+                legend: {
+                    enabled: false
+                },
+            
+                tooltip: {
+                    formatter: function () {
+                        var rank = this.point.index + 1;
+                        var percentOfTotal = (this.point.y / this.point.stackTotal) * 100;
+                        return (
+                            "<b>" +
+                            labelxSelect() +
+                            ": " +
+                            "<b>" +
+                            this.point.category +
+                            "</b></b><br/>" +
+                            this.series.name +
+                            ": " +
+                            "<b>" +
+                            this.point.y.toFixed(2) +
+                            " (" +
+                            percentOfTotal.toFixed(2) +
+                            "%)" +
+                            "</b></b><br/>" +
+                            labelySelect() +
+                            " Total: " +
+                            "<b>" +
+                            this.point.stackTotal.toFixed(2) +
+                            "</b></b><br/>" +
+                            "Rank: " +
+                            "<b>" +
+                            rank +
+                            "</b>"
+                        );
+                    }
+                },
+            
+                plotOptions: {
+                    column: {
+                        stacking: 'normal', 
+                        dataLabels: {
+                            enabled: false
+                        }
+                    }, 
+                    series: {
+                        dataLabels: {
+                            enabled: false,
+                            formatter: function() {
+                                return 'test';
+                            }
+                        },
+                    }
+                },
+                series: series,
+                // series: [
+                //     {
+                //         data: chartArr[0],
+                //     }, 
+                //     {
+                //         data: chartArr[1],
+                //     },
+                //     {
+                //         data: chartArr[2],
+                //     },
+                //     {
+                //         data: chartArr[3],
+                //     },
+                //     {
+                //         data: chartArr[4],
+                //     },
+                //     {
+                //         data: chartArr[5],
+                //     },
+                // ],
+                credits: {
+                    enabled: false
+                }                
+            });
+            var height = $("#chartWindowDiv").height();
+            var width = $("#chartWindowDiv").width();
+            $("#scenarioWindowContainer")
+                .highcharts()
+                .setSize(width - 425, height - 400, true);
+
+            $("#scenarioBtn").click(function(){               
+                $("#scenarioWindowContainer2").highcharts({
+                    chart: {
+                        type: 'column',
+                        zoomType: 'x',
+                        backgroundColor: "rgba(255, 255, 255, 0.45)",
+                    },
+                    // chart: {
+                    //     type: 'column'
+                    // },
+                    title: {
+                        text: null
+                    },
+                    xAxis: {
+                        labels: {
+                            format: '<div style="text-align:center;">Scenario Data<br /><br />{value}</div>',
+                            useHTML: true
+                        },
+                        categories: columnLabels,
+                        title: {
+                            text: 'Ranked by ' + labelxSelect()
+                        },
+                    },
+                    yAxis: [{
+                        title: {
+                            text: labelySelect()
+                        },
+                    },],
+                    legend: {
+                        enabled: false
+                    },
+                    plotOptions: {
+                        column: {
+                            stacking: 'normal',
+                        },
+                        dataLabels: {
+                            enabled: false
+                        }
+                    },
+                    credits: {
+                        enabled: false
+                    },
+                    //series: scenarioSeries                   
+                    series: [{
+                            name: chartLabelsArr[0],
+                            data: [60]},{
+                            name: chartLabelsArr[1],
+                            data: [55]},{
+                            name: chartLabelsArr[2],
+                            data: [100]},{
+                            name: chartLabelsArr[3],
+                            data: [55]},{
+                            name: chartLabelsArr[4],
+                            data: [15]},{
+                            name: chartLabelsArr[5],
+                            data: [45]}],
+                });
+                var height = $("#chartWindowDiv").height();
+                var width = $("#chartWindowDiv").width();
+                $("#scenarioWindowContainer2").highcharts()
+                .setSize(width - 425, height - 400, true);
+            });
+
+
+            // var scenarioData = [];
+    
+            // for (var i in obj) {
+            //     scenarioData.push({
+            //         name: scenarioSeries[i].name,
+            //         data: scenarioSeries[i].data
+            //     });
+            // }
+
+            // var val1 = $("input[name='first']").map(function(){
+            //     return $(this).val();}).get();
+            // var val2 = $("input[name='second']").map(function(){
+            //     return $(this).val();}).get();
+            // var val3 = $("input[name='third']").map(function(){
+            //     return $(this).val();}).get();
+            // var val4 = $("input[name='fourth']").map(function(){
+            //     return $(this).val();}).get();
+            // var val5 = $("input[name='fifth']").map(function(){
+            //     return $(this).val();}).get();
+            // var val6 = $("input[name='sixth']").map(function(){
+            //     return $(this).val();}).get();
+            // var scenarioSeries = [
+            //     {
+            //         name: chartLabelsArr[0],
+            //         data: 60
+            //     },
+            //     {
+            //         name: chartLabelsArr[1],
+            //         data: 55
+            //     }, 
+            //     {
+            //         name: chartLabelsArr[2],
+            //         data: 100
+            //     },
+            //     {
+            //         name: chartLabelsArr[3],
+            //         data: 55
+            //     },
+            //     {
+            //         name: chartLabelsArr[4],
+            //         data: 15
+            //     },
+            //     {
+            //         name: chartLabelsArr[5],
+            //         data: 45
+            //     }]
+            
             $(".highcharts-button-box").click(function() {
                 $.each(app.map.graphics.graphics, function(i, obj) {
                     if (obj.symbol.id == "zoomhighlight") {
@@ -2442,7 +2665,10 @@ require([
                 }
               })
             }
-        }); //END self-invoking highcharts function
+        });
+
+        //END self-invoking highcharts function
+
         var height = $("#chartWindowDiv").height() - 65;
         var width = $("#chartWindowDiv").width();
         $("#chartWindowContainer")
@@ -2451,6 +2677,14 @@ require([
         $("#chartTabContent").removeClass("content-loading");
         //$('#chartWindowDiv').removeClass("content-loading");
         //$('#loadingDiv').removeClass("content-loading");
+        //var scenarioHeight = $("#chartWindowDiv").height() - 65;
+        //var scenarioWidth = $("#chartWindowDiv").width();
+        // $("#scenarioWindowContainer")
+        //     .highcharts()
+        //     .setSize(width - 425, height - 400, true);
+        // $("#scenarioWindowContainer2")
+        //     .highcharts()
+        //     .setSize(width - 420, height - 400, true);
     } //END ShowChart()
 
     //function to filter table based on selection in chart
@@ -2563,6 +2797,10 @@ require([
             }
         });
     } //END buildTable
+
+    //table in lobipanel Scenario tab
+    
+    //END buildTable in Scenario tab
 
     //hover over table row, go highlight region on map
     $(document).on("mouseenter", "#tableBody tr", function(e) {
