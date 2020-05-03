@@ -2069,6 +2069,40 @@ require([
         
 
         //var chart = $("#chartWindowContainer").highcharts();
+        var userInput = [];
+            $(function(){
+                $("#scenarioBtn").click(function() {
+                //var userInputs = [];
+                $('input[class^=test]').each(function() {
+                    userInput.push(parseInt($(this).val()));
+                    //var value = parseInt($(this).text());
+                    //userInput.push(value);
+                    
+                });
+                console.log(userInput);
+                //return false;
+            })
+            });
+            var scenarioSeries = [{
+                name: chartLabelsArr[0],
+                data: [userInput[0]]
+            },{
+                name: chartLabelsArr[1],
+                data: [userInput[1]]
+            },{
+                name: chartLabelsArr[2],
+                data: [userInput[2]]
+            },{
+                name: chartLabelsArr[3],
+                data: [userInput[3]]
+            },{
+                name: chartLabelsArr[4],
+                data: [userInput[4]]
+            },{
+                name: chartLabelsArr[5],
+                data: [userInput[5]]
+            }];
+
 
         $(function() {
             Highcharts.setOptions({
@@ -2531,75 +2565,87 @@ require([
                     enabled: false
                 }                
             });
-            var height = $("#chartWindowDiv").height();
-            var width = $("#chartWindowDiv").width();
-            $("#scenarioWindowContainer")
-                .highcharts()
-                .setSize(width - 425, height - 400, true);
 
-            $("#scenarioBtn").click(function(){               
-                $("#scenarioWindowContainer2").highcharts({
-                    chart: {
-                        type: 'column',
-                        zoomType: 'x',
-                        backgroundColor: "rgba(255, 255, 255, 0.45)",
+            // var userInput = [];
+            // $(".scenario").each(function() {
+            //     var value = parseInt($(this).text());
+            //     userInput.push(value);
+            // })
+
+            // var scenarioSeries = [{
+            //     name: chartLabelsArr[0],
+            //     data: [userInput[0]]
+            // },{
+            //     name: chartLabelsArr[1],
+            //     data: [userInput[1]]
+            // },{
+            //     name: chartLabelsArr[2],
+            //     data: [userInput[2]]
+            // },{
+            //     name: chartLabelsArr[3],
+            //     data: [userInput[3]]
+            // },{
+            //     name: chartLabelsArr[4],
+            //     data: [userInput[4]]
+            // },{
+            //     name: chartLabelsArr[5],
+            //     data: [userInput[5]]
+            // }];
+            
+
+            $("#scenarioWindowContainer2").highcharts({
+                chart: {
+                    type: 'column',
+                    zoomType: 'x',
+                    backgroundColor: "rgba(255, 255, 255, 0.45)",
+                    events: {
+                        load: function() {
+                            var chart = this;
+                            series = scenarioSeries;
+                            $("#scenarioBtn2").click(function(){
+                                chart.update({
+                                    series: scenarioSeries
+                                },)
+                            })
+                            console.log(series) 
+                        },
                     },
-                    // chart: {
-                    //     type: 'column'
-                    // },
+                },
+                title: {
+                    text: null
+                },
+                xAxis: {
+                    labels: {
+                        format: '<div style="text-align:center;">Scenario Data<br /><br />{value}</div>',
+                        useHTML: true
+                    },
+                    categories: columnLabels,
                     title: {
-                        text: null
+                        text: 'Ranked by ' + labelxSelect()
                     },
-                    xAxis: {
-                        labels: {
-                            format: '<div style="text-align:center;">Scenario Data<br /><br />{value}</div>',
-                            useHTML: true
-                        },
-                        categories: columnLabels,
-                        title: {
-                            text: 'Ranked by ' + labelxSelect()
-                        },
+                },
+                yAxis: [{
+                    title: {
+                        text: labelySelect()
                     },
-                    yAxis: [{
-                        title: {
-                            text: labelySelect()
-                        },
-                    },],
-                    legend: {
+                },],
+                legend: {
+                    enabled: false
+                },
+                plotOptions: {
+                    column: {
+                        stacking: 'normal',
+                    },
+                    dataLabels: {
                         enabled: false
                     },
-                    plotOptions: {
-                        column: {
-                            stacking: 'normal',
-                        },
-                        dataLabels: {
-                            enabled: false
-                        }
-                    },
-                    credits: {
-                        enabled: false
-                    },
-                    //series: scenarioSeries                   
-                    series: [{
-                            name: chartLabelsArr[0],
-                            data: [60]},{
-                            name: chartLabelsArr[1],
-                            data: [55]},{
-                            name: chartLabelsArr[2],
-                            data: [100]},{
-                            name: chartLabelsArr[3],
-                            data: [55]},{
-                            name: chartLabelsArr[4],
-                            data: [15]},{
-                            name: chartLabelsArr[5],
-                            data: [45]}],
-                });
-                var height = $("#chartWindowDiv").height();
-                var width = $("#chartWindowDiv").width();
-                $("#scenarioWindowContainer2").highcharts()
-                .setSize(width - 425, height - 400, true);
+                },              
+                credits: {
+                    enabled: false
+                },               
+                series: series
+                //series: scenarioSeries                                   
             });
-
 
             // var scenarioData = [];
     
@@ -2679,12 +2725,12 @@ require([
         //$('#loadingDiv').removeClass("content-loading");
         //var scenarioHeight = $("#chartWindowDiv").height() - 65;
         //var scenarioWidth = $("#chartWindowDiv").width();
-        // $("#scenarioWindowContainer")
-        //     .highcharts()
-        //     .setSize(width - 425, height - 400, true);
-        // $("#scenarioWindowContainer2")
-        //     .highcharts()
-        //     .setSize(width - 420, height - 400, true);
+        $("#scenarioWindowContainer")
+            .highcharts()
+            .setSize(width - 425, height - 400, true);
+        $("#scenarioWindowContainer2")
+            .highcharts()
+            .setSize(width - 420, height - 400, true);
     } //END ShowChart()
 
     //function to filter table based on selection in chart
@@ -2798,7 +2844,20 @@ require([
         });
     } //END buildTable
 
-    //table in lobipanel Scenario tab
+    //table in lobipanel Scenario tab    
+    
+    // NOT CLEARING OLD DATA, LOOKS LIKE, COME BACK AND FIX THIS!!!
+
+    // $(function() {
+    //     //setTimeout(() => {
+    //         // $("#resultsTable").one("change", event.data, function() {
+    //         //     $("#resultsTable2").empty();
+    //     //},2000)        
+    //     //})       
+    //     setTimeout(() => {            
+    //         $("#resultsTable").clone().appendTo("#resultsTable2");
+    //     }, 3000);
+    // });
     
     //END buildTable in Scenario tab
 
