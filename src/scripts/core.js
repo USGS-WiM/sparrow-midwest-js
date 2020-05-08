@@ -2069,40 +2069,7 @@ require([
         
 
         //var chart = $("#chartWindowContainer").highcharts();
-        var userInput = [];
-            $(function(){
-                $("#scenarioBtn").click(function() {
-                //var userInputs = [];
-                $('input[class^=test]').each(function() {
-                    userInput.push(parseInt($(this).val()));
-                    //var value = parseInt($(this).text());
-                    //userInput.push(value);
-                    
-                });
-                console.log(userInput);
-                //return false;
-            })
-            });
-            var scenarioSeries = [{
-                name: chartLabelsArr[0],
-                data: [userInput[0]]
-            },{
-                name: chartLabelsArr[1],
-                data: [userInput[1]]
-            },{
-                name: chartLabelsArr[2],
-                data: [userInput[2]]
-            },{
-                name: chartLabelsArr[3],
-                data: [userInput[3]]
-            },{
-                name: chartLabelsArr[4],
-                data: [userInput[4]]
-            },{
-                name: chartLabelsArr[5],
-                data: [userInput[5]]
-            }];
-
+        
 
         $(function() {
             Highcharts.setOptions({
@@ -2591,6 +2558,69 @@ require([
             //     name: chartLabelsArr[5],
             //     data: [userInput[5]]
             // }];
+
+            //THIS WAS WORKING BUT LOADS AFTER THE FACT AND NOT NEXT TO OTHER CHART
+            // $('#scenarioBtn').click(function(){               
+            //     $('#scenarioWindowContainer2').highcharts({
+            //         chart: {
+            //             type: 'column',
+            //             zoomType: 'x',
+            //             backgroundColor: "rgba(255, 255, 255, 0.45)",
+            //         },
+            //         // chart: {
+            //         //     type: 'column'
+            //         // },
+            //         title: {
+            //             text: null
+            //         },
+            //         xAxis: {
+            //             labels: {
+            //                 format: '<div style="text-align:center;">Scenario Data<br /><br />{value}</div>',
+            //                 useHTML: true
+            //             },
+            //             categories: columnLabels,
+            //             title: {
+            //                 text: 'Ranked by ' + labelxSelect()
+            //             },
+            //         },
+            //         yAxis: [{
+            //             title: {
+            //                 text: labelySelect()
+            //             },
+            //         },],
+            //         legend: {
+            //             enabled: false
+            //         },
+            //         plotOptions: {
+            //             column: {
+            //                 stacking: 'normal',
+            //             },
+            //             dataLabels: {
+            //                 enabled: false
+            //             }
+            //         },
+            //         credits: {
+            //             enabled: false
+            //         },
+            //         //series: scenarioSeries                   
+            //         series: [{
+            //                 name: chartLabelsArr[0],
+            //                 data: [60]},{
+            //                 name: chartLabelsArr[1],
+            //                 data: [55]},{
+            //                 name: chartLabelsArr[2],
+            //                 data: [100]},{
+            //                 name: chartLabelsArr[3],
+            //                 data: [55]},{
+            //                 name: chartLabelsArr[4],
+            //                 data: [15]},{
+            //                 name: chartLabelsArr[5],
+            //                 data: [45]}],
+            //     });
+            // });
+            //THIS WAS WORKING BUT LOADS AFTER THE FACT AND NOT NEXT TO OTHER CHART
+
+            var scenarioSeries = [];
             
 
             $("#scenarioWindowContainer2").highcharts({
@@ -2601,13 +2631,34 @@ require([
                     events: {
                         load: function() {
                             var chart = this;
-                            series = scenarioSeries;
-                            $("#scenarioBtn2").click(function(){
+                            //series = scenarioSeries;
+                            $("#scenarioBtn").click(function(){
+                                var scenarioSeries = [{
+                                    name: chartLabelsArr[0],
+                                    data: $("input[name='first']").map(function(){return parseInt($(this).val());}).get()
+                                },{
+                                    name: chartLabelsArr[1],
+                                    data: $("input[name='second']").map(function(){return parseInt($(this).val());}).get()
+                                },{
+                                    name: chartLabelsArr[2],
+                                    data: $("input[name='third']").map(function(){return parseInt($(this).val());}).get()
+                                },{
+                                    name: chartLabelsArr[3],
+                                    data: $("input[name='fourth']").map(function(){return parseInt($(this).val());}).get()
+                                },{
+                                    name: chartLabelsArr[4],
+                                    data: $("input[name='fifth']").map(function(){return parseInt($(this).val());}).get()
+                                },{
+                                    name: chartLabelsArr[5],
+                                    data: $("input[name='sixth']").map(function(){return parseInt($(this).val());}).get()
+                                }];
                                 chart.update({
                                     series: scenarioSeries
+                                    //series: series
                                 },)
+                                console.log(scenarioSeries)
                             })
-                            console.log(series) 
+                             
                         },
                     },
                 },
@@ -2643,8 +2694,27 @@ require([
                 credits: {
                     enabled: false
                 },               
-                series: series
-                //series: scenarioSeries                                   
+                // series: [{
+                //     name: chartLabelsArr[0],
+                //     data: $("input[name='first']").map(function(){return parseInt($(this).val());}).get()
+                // },{
+                //     name: chartLabelsArr[1],
+                //     data: $("input[name='second']").map(function(){return parseInt($(this).val());}).get()
+                // },{
+                //     name: chartLabelsArr[2],
+                //     data: $("input[name='third']").map(function(){return parseInt($(this).val());}).get()
+                // },{
+                //     name: chartLabelsArr[3],
+                //     data: $("input[name='fourth']").map(function(){return parseInt($(this).val());}).get()
+                // },{
+                //     name: chartLabelsArr[4],
+                //     data: $("input[name='fifth']").map(function(){return parseInt($(this).val());}).get()
+                // },{
+                //     name: chartLabelsArr[5],
+                //     data: $("input[name='sixth']").map(function(){return parseInt($(this).val());}).get()
+                // }]
+                //series: scenarioSeries 
+                series: series                                  
             });
 
             // var scenarioData = [];
