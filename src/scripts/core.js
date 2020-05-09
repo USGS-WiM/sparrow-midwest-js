@@ -2431,7 +2431,7 @@ require([
             $("#scenarioWindowContainer").highcharts({
                 chart: {
                     type: 'column',
-                    zoomType: 'xy',
+                    zoomType: 'x',
                     backgroundColor: "rgba(255, 255, 255, 0.45)",
                 },
             
@@ -2537,7 +2537,7 @@ require([
             $("#scenarioWindowContainer2").highcharts({
                 chart: {
                     type: 'column',
-                    zoomType: 'x',
+                    zoomType: 'xy',
                     backgroundColor: "rgba(255, 255, 255, 0.45)",
                     events: {
                         load: function() {
@@ -2565,8 +2565,20 @@ require([
                                 chart.update({
                                     series: scenarioSeries
                                 },)
+
+                                // $("input[type='text']").map(function() {
+                                //     var scenarioTotal = 0;
+                                //     $(this).find('input').each(function(i,n) {
+                                //         scenarioTotal += parseInt($(n).val(),10);
+                                //     })
+                                //     console.log(scenarioTotal)
+                                // })
+
+                                
+
                                 console.log(scenarioSeries)
                             })
+                            
                              
                         },
                     },
@@ -2642,7 +2654,7 @@ require([
             .setSize(width - 425, height - 400, true);
         $("#scenarioWindowContainer2")
             .highcharts()
-            .setSize(width - 420, height - 400, true);
+            .setSize(width - 425, height - 400, true);
     } //END ShowChart()
 
     //function to filter table based on selection in chart
@@ -2768,7 +2780,7 @@ require([
         //console.log($('.tablesorter-header.tablesorter-headerUnSorted')[0].innerHTML)      
         var HeaderArr = [];
         var divs = [];
-        $.each($('.tablesorter-header.tablesorter-headerUnSorted'), function(index, th) {
+        $.each($(".tablesorter-header.tablesorter-headerUnSorted"), function(index, th) {
             //console.log(index, th)
             divs.push(this.innerHTML)
         })
@@ -2784,16 +2796,56 @@ require([
 
         //TABLE BODY
         var rows = [];
+        var scenarioRows = [
+            '<tr><td>Scenario Input Data</td><td><input type="text" value="" name="first" border="red"></input><div style="background:#BF0000;height: 3px;margin-bottom:2px;"></div></td><td><input type="text" value="" name="second"></input><div style="background:#FFCCFF;height: 3px;margin-bottom:2px;"></div></td><td><input type="text" value="" name="third"></input><div style="background:#FFEC99;height: 3px;margin-bottom:2px;"></div></td><td><input type="text" value="" name="fourth"></input><div style="background:#663100;height: 3px;margin-bottom:2px;"></div></td><td><input type="text" value="" name="fifth"></input><div style="background:#A2EB85;height: 3px;margin-bottom:2px;"></div></td><td><input type="text" value="" name="sixth"></input><div style="background:#999999;height: 3px;margin-bottom:2px;"></div></td><td></td><td></td></tr>'
+        ];
+
         $("#resultsTable2").append('<tbody id="scenarioTableBody"></tbody>');
-        console.log($('#tableBody'))
+        //console.log($('#tableBody'))
         $.each($('#tableBody'), function(index, body) {
-            console.log(body)
+            //console.log(body)
             rows.push(this.innerHTML)
         })
-        console.log(rows)
+        rows.push(scenarioRows);
+
+        
+
+
+        //console.log(rows)
         $("#scenarioTableBody").html(rows.join(""));
         //END of TABLE BODY
+
+        //SCENARIO input table
+        $("#scenarioInputs").empty();
+        ////////TEMP HEADER///////////////////////////// 
+        // $("#scenarioInputs").append("<thead></thead>");
+        // var scenarioHead = [];
+        // scenarioHead.push("<tr>");
+        // $.each(divs, function(index, div) {
+        //     scenarioHead.push("<th>" + div + "</th>");
+        // });
+        // scenarioHead.push("</tr>");
+        // //console.log(HeaderArr);
+        // //console.log(divs)
+        // $("#scenarioInputs").find("thead").html(scenarioHead.join(""));
+        //TABLE BODY
+        //var one = '<input type="text" value="" name="first"></input>'
+        
+        //$("#scenarioInputs").append('<tbody id="scenarioTableInputs"></tbody>');
+        //console.log($('#tableBody'))
+        // $.each($('#tableBody'), function(index, body) {
+        //     console.log(body)
+        //     rows.push(this.innerHTML)
+        // })
+        // console.log(rows)
+        //$("#scenarioTableInputs").html(scenarioRows.join(""));
+        //END of TABLE BODY
+        
+
+
     };
+    
+    
     
     //END buildTable in Scenario tab
 
