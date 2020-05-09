@@ -504,6 +504,10 @@ table.hover-highlight tbody > tr.even:hover > td {
     font-size:12px;
 }
 
+#scenarioTableBody{
+    font-size:12px;
+}
+
 .table thead tr td{
     font-size: 12px;
 }
