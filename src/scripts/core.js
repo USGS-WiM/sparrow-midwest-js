@@ -2070,7 +2070,6 @@ require([
         
 
         //var chart = $("#chartWindowContainer").highcharts();
-        
 
         $(function() {
             Highcharts.setOptions({
@@ -2509,26 +2508,6 @@ require([
                     }
                 },
                 series: series,
-                // series: [
-                //     {
-                //         data: chartArr[0],
-                //     }, 
-                //     {
-                //         data: chartArr[1],
-                //     },
-                //     {
-                //         data: chartArr[2],
-                //     },
-                //     {
-                //         data: chartArr[3],
-                //     },
-                //     {
-                //         data: chartArr[4],
-                //     },
-                //     {
-                //         data: chartArr[5],
-                //     },
-                // ],
                 credits: {
                     enabled: false
                 }                
@@ -2564,22 +2543,17 @@ require([
                                 }];
                                 chart.update({
                                     series: scenarioSeries
-                                },)
-
-                                // $("input[type='text']").map(function() {
-                                //     var scenarioTotal = 0;
-                                //     $(this).find('input').each(function(i,n) {
-                                //         scenarioTotal += parseInt($(n).val(),10);
-                                //     })
-                                //     console.log(scenarioTotal)
-                                // })
-
-                                
-
+                                },);
                                 console.log(scenarioSeries)
-                            })
-                            
-                             
+                                var scenarioTotal = 0;
+                                $("#scenarioTotal").empty();
+                                $("#scenarioTotal").append("<br>");
+                                $("input[type='text']").each(function(){
+                                    scenarioTotal += Number($(this).val());
+                                    $("#scenarioTotal").text(scenarioTotal);
+                                });
+                                console.log(scenarioTotal);   
+                            })                               
                         },
                     },
                 },
@@ -2769,12 +2743,10 @@ require([
     } //END buildTable
 
     //table in lobipanel Scenario tab    
-    
-    // NOT CLEARING OLD DATA, LOOKS LIKE, COME BACK AND FIX THIS!!!
 
     function buildScenarioTable() {
         $("#resultsTable2").empty();
-        //TABLE HEADER, taken from results table. 
+        //TABLE HEADER
         $("#resultsTable2").append("<thead></thead>");
         //console.log($('.tablesorter-header.tablesorter-headerUnSorted'))
         //console.log($('.tablesorter-header.tablesorter-headerUnSorted')[0].innerHTML)      
@@ -2793,24 +2765,22 @@ require([
         //console.log(divs)
         $("#resultsTable2").find("thead").html(HeaderArr.join(""));
         //END of TABLE HEADER!!
-
         //TABLE BODY
         var rows = [];
+        var area = $('#tableBody')[0].children[0].children[8].innerText;
+        rows.push("<tr>")
         var scenarioRows = [
-            '<tr><td>Scenario Input Data</td><td><input type="text" value="" name="first" border="red"></input><div style="background:#BF0000;height: 3px;margin-bottom:2px;"></div></td><td><input type="text" value="" name="second"></input><div style="background:#FFCCFF;height: 3px;margin-bottom:2px;"></div></td><td><input type="text" value="" name="third"></input><div style="background:#FFEC99;height: 3px;margin-bottom:2px;"></div></td><td><input type="text" value="" name="fourth"></input><div style="background:#663100;height: 3px;margin-bottom:2px;"></div></td><td><input type="text" value="" name="fifth"></input><div style="background:#A2EB85;height: 3px;margin-bottom:2px;"></div></td><td><input type="text" value="" name="sixth"></input><div style="background:#999999;height: 3px;margin-bottom:2px;"></div></td><td></td><td></td></tr>'
+            '<td>Scenario Input Data</td><td><input type="text" value="" name="first" border="red"></input><div style="background:#BF0000;height: 3px;margin-bottom:2px;"></div></td><td><input type="text" value="" name="second"></input><div style="background:#FFCCFF;height: 3px;margin-bottom:2px;"></div></td><td><input type="text" value="" name="third"></input><div style="background:#FFEC99;height: 3px;margin-bottom:2px;"></div></td><td><input type="text" value="" name="fourth"></input><div style="background:#663100;height: 3px;margin-bottom:2px;"></div></td><td><input type="text" value="" name="fifth"></input><div style="background:#A2EB85;height: 3px;margin-bottom:2px;"></div></td><td><input type="text" value="" name="sixth"></input><div style="background:#999999;height: 3px;margin-bottom:2px;"></div></td><td><br/><div id="scenarioTotal">0</div></td>'
         ];
-
         $("#resultsTable2").append('<tbody id="scenarioTableBody"></tbody>');
         //console.log($('#tableBody'))
         $.each($('#tableBody'), function(index, body) {
             //console.log(body)
             rows.push(this.innerHTML)
-        })
+        });
         rows.push(scenarioRows);
-
-        
-
-
+        rows.push("<td>" + "<br>" + area + "</td>");
+        rows.push("</tr>");
         //console.log(rows)
         $("#scenarioTableBody").html(rows.join(""));
         //END of TABLE BODY
