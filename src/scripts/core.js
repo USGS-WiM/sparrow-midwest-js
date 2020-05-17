@@ -2449,11 +2449,11 @@ require([
                         },
                     },
             
-                yAxis: [{
+                yAxis: {
                     title: {
                         text: labelySelect()
                     },
-                }],
+                },
 
                 legend: {
                     enabled: false
@@ -2541,15 +2541,28 @@ require([
                                     name: chartLabelsArr[5],
                                     data: $("input[name='sixth']").map(function(){return parseInt($(this).val());}).get()
                                 }];
+
+                                var max = 0;
+                                Highcharts.each(Highcharts.charts, function(p, i) {
+                                  if (p.yAxis[0].max > max) {
+                                    max = p.yAxis[0].max;
+                                  }
+                                });
+                                Highcharts.each(Highcharts.charts, function(p, i) {
+                                  p.yAxis[0].update({
+                                    max: max
+                                  })
+                                });
+
                                 chart.update({
-                                    series: scenarioSeries
+                                    series: scenarioSeries                                   
                                 },);
                                 console.log(scenarioSeries)
                                 var scenarioTotal = 0;
                                 $("#scenarioTotal").empty();
                                 $("#scenarioTotal").append("<br>");
                                 $("input[type='text']").each(function(){
-                                    scenarioTotal += Number($(this).val());
+                                    scenarioTotal += Number($(this).val(),10);
                                     $("#scenarioTotal").text(scenarioTotal);
                                 });
                                 console.log(scenarioTotal);   
@@ -2570,17 +2583,17 @@ require([
                         text: 'Ranked by ' + labelxSelect()
                     },
                 },
-                yAxis: [{
+                yAxis: {
                     title: {
                         text: labelySelect()
                     },
-                },],
+                },
                 legend: {
                     enabled: false
                 },
                 plotOptions: {
                     column: {
-                        stacking: 'normal',
+                        stacking: 'normal',  
                     },
                     dataLabels: {
                         enabled: false
@@ -2589,7 +2602,7 @@ require([
                 credits: {
                     enabled: false
                 },               
-                series: series                                  
+                series: series                              
             });
             
             $(".highcharts-button-box").click(function() {
