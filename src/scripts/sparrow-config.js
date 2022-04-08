@@ -11,7 +11,7 @@ var appTitle =
 var appVersion = "v0.9.0"; // could pull this from code/package.json
 
 var serviceBaseURL =
-  "https://sparrowtest.wim.usgs.gov/arcgis/rest/services/SparrowMidwest/SparrowMidwest/MapServer/"; //important! UPDATE rest service URL
+  "https://gis1.wim.usgs.gov/server/rest/services/Sparrow/SparrowMidwest/MapServer/"; //important! UPDATE rest service URL
 var chartUnits = " (kg/yr.)";
 var chartFeatureMax = 6000; //chart will not be available if more than this many polygons are showing on map.
 
