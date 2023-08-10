@@ -189,7 +189,7 @@ require([
           },
         },
         "NLCD Land Use 2012": {
-          url: "https://gis1.wim.usgs.gov/arcgis/rest/services/SWTrends/lu2012_100515_test/ImageServer",
+          url: "https://gis1.wim.usgs.gov/server/rest/services/SWTrends/lu2012_100515_test/ImageServer",
           options: {
             id: "lu2012",
             opacity: 0.5,
