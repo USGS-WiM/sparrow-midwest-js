@@ -1,0 +1,50 @@
+image: code.chs.usgs.gov:5001/usgs-chs/chs-library/docker/images/ubuntu:latest
+
+# Before_script runs before every step/stage
+before_script:
+  # setup DOI cert to fix DOI Intercept issue
+  - echo "setting up machine"
+  - apt-get update -y
+  - apt-get install ca-certificates -y
+  - apt-get install git -y
+  - git clone https://gitlab-ci-token:${CI_JOB_TOKEN}@code.usgs.gov/WiM/automationtemplates/runnercert.git
+  - cp runnercert/DOICert.crt /usr/local/share/ca-certificates
+  - ls -al /usr/local/share/ca-certificates
+  - update-ca-certificates
+  - export NODE_EXTRA_CA_CERTS=runnercert/DOICert.crt
+
+    # setup node at version specified
+  - apt-get install curl -y
+  - apt-get install unzip -y
+  - curl -fsSL https://fnm.vercel.app/install | bash
+  - export PATH="/root/.local/share/fnm:$PATH"
+  - eval "`fnm env`"
+  - source /root/.bashrc
+  - fnm use --install-if-missing 10.15.0
+  - node -v
+  - npm -v
+
+  # install the aws cli through their recommended approach
+  - echo "installing aws cli"
+  - apt-get install zip unzip -y
+  - apt-get install curl -y
+  - curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
+  - unzip awscliv2.zip
+  - ./aws/install
+  - aws --version
+
+# Each step/stage gets its own container/runner so this deployToTest will not
+#       share any files or updates with deployToProd, which is the reason to
+#       use the before_script
+deployToTest:
+  stage: deploy
+  script:
+    - echo "starting build and deploy to test"
+    - npm rebuild
+    - echo "starting build and deploy"
+    - npm run-script build
+    - echo "Copying to S3 bucket"
+    - aws s3 cp ./build s3://test.wim.usgs.gov/sparrow-midwest-test/ --recursive
+
+  rules:
+    - if: $CI_COMMIT_BRANCH == "dev"
