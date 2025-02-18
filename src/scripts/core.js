@@ -112,10 +112,12 @@ require([
 
   //setup map
   app.map = Map("mapDiv", {
-    basemap: "gray",
+    basemap: "OSM",
     center: app.defaultMapCenter,
     zoom: app.defaultZoom,
   });
+
+  app.map.addLayer(tnmLayer);
 
   //button for returning to initial extent
   app.home = new HomeButton(
@@ -1669,9 +1671,8 @@ require([
     var tableQueryTask;
     var sparrowLayerId = app.map.getLayer("SparrowRanking").visibleLayers[0];
     if (app.map.getLayer("SparrowRanking").layerDefinitions) {
-      var whereClause = app.map.getLayer("SparrowRanking").layerDefinitions[
-        sparrowLayerId
-      ];
+      var whereClause =
+        app.map.getLayer("SparrowRanking").layerDefinitions[sparrowLayerId];
     } else {
       var whereClause = "1=1";
     }
@@ -1730,9 +1731,8 @@ require([
 
       if (optionalWhereClause == undefined) {
         if (app.map.getLayer("SparrowRanking").layerDefinitions) {
-          var whereClause = app.map.getLayer("SparrowRanking").layerDefinitions[
-            sparrowLayerId
-          ];
+          var whereClause =
+            app.map.getLayer("SparrowRanking").layerDefinitions[sparrowLayerId];
         } else {
           var whereClause = "1=1";
         }
@@ -2421,8 +2421,8 @@ require([
         },
         colors: colorArr,
       });
-      var buttons = Highcharts.getOptions().exporting.buttons.contextButton
-        .menuItems;
+      var buttons =
+        Highcharts.getOptions().exporting.buttons.contextButton.menuItems;
 
       $("#chartWindowContainer").highcharts({
         chart: {
@@ -2481,8 +2481,8 @@ require([
               app.map.graphics.clear();
 
               var queryTask;
-              var visibleLayers = app.map.getLayer("SparrowRanking")
-                .visibleLayers[0];
+              var visibleLayers =
+                app.map.getLayer("SparrowRanking").visibleLayers[0];
               var URL = app.map.getLayer("SparrowRanking").url;
               var fieldName = switchWhereField(
                 $("#groupResultsSelect")[0].selectedIndex
@@ -2731,8 +2731,8 @@ require([
                     $("#groupResultsSelect")[0].selectedIndex == 0
                       ? this.id
                       : this.category; //refers to the selected chart area
-                  var visibleLayers = app.map.getLayer("SparrowRanking")
-                    .visibleLayers[0];
+                  var visibleLayers =
+                    app.map.getLayer("SparrowRanking").visibleLayers[0];
                   var URL = app.map.getLayer("SparrowRanking").url;
                   var fieldName = switchWhereField(
                     $("#groupResultsSelect")[0].selectedIndex

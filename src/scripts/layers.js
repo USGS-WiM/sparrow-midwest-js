@@ -6,6 +6,7 @@
     Also make sure that titles are appropriate
  **/
 var allLayers;
+var tnmLayer;
 
 require([
   "esri/geometry/Extent",
@@ -13,13 +14,15 @@ require([
   "esri/layers/FeatureLayer",
   "esri/layers/ImageParameters",
   "esri/layers/LayerDrawingOptions",
+  "esri/layers/ArcGISTiledMapServiceLayer",
   "dojo/domReady!",
 ], function (
   Extent,
   WMSLayerInfo,
   FeatureLayer,
   ImageParameters,
-  LayerDrawingOptions
+  LayerDrawingOptions,
+  ArcGISTiledMapServiceLayer
 ) {
   var sparrowOverlay;
   if ($("#radio1")[0].checked == true) {
@@ -30,6 +33,13 @@ require([
 
   var layerOptions = new LayerDrawingOptions();
   layerOptions.scaleSymbols = true;
+
+  tnmLayer = new ArcGISTiledMapServiceLayer(
+    "https://basemap.nationalmap.gov/arcgis/rest/services/USGSTopo/MapServer",
+    {
+      id: "tnm",
+    }
+  );
 
   allLayers = [
     {
@@ -42,7 +52,7 @@ require([
           visibleLayers: [sparrowOverlay],
           options: {
             id: "SparrowRanking",
-            opacity: 0.75,
+            opacity: 0.9,
             visible: true,
             layerDrawingOptions: layerOptions,
           },
